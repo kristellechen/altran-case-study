@@ -15,6 +15,9 @@ modify package.json
 
 npm install mongoose
 
+Install standard-js from Sam Chen
+To autofix formatting. stop server and run 'standard --fix'
+
 Installing MongoDB
     
     Download the MongoDB installer file from the downloads section of the MongoDB website.
