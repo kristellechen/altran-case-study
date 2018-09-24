@@ -13,11 +13,11 @@
         <th>Discipline</th>
         <th>Action</th>
       </thead>
-      <tr v-for='study in studies' :key='study.ID'>
+      <tr v-for='study in studies' :key='study.ID' @click='update(study)'>
         <td>{{study.Client}}</td>
-        <td>{{study['Project Name']}}</td>
+        <td>{{study.ProjectName}}</td>
         <td>{{study.Keywords}}</td>
-        <td>{{study['Engagement Type']}}</td>
+        <td>{{study.Engagement}}</td>
         <td>{{study.Industry}}</td>
         <td>{{study.Discipline}}</td>
       </tr>
@@ -38,6 +38,15 @@
     methods: {
       refresh: function () {
         this.studies = server.getStudies()
+      },
+      update: function(study){
+        const tmpStudy = JSON.parse(JSON.stringify(study))
+        this.$router.push({
+          name: 'updateproject',
+          params: {
+            study: tmpStudy // clone the object
+          }
+        })
       }
     }
   }

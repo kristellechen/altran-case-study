@@ -1,7 +1,7 @@
 <template>
     <div>
-        <h2>Add a new Project</h2>
-        <Study></Study>
+        <h2>Update an existing project</h2>
+        <Study v-bind:study='study'></Study>
     </div>
 </template>
 
@@ -9,7 +9,8 @@
     import Study from '@/components/Study.vue'
 
     export default {
-        name: 'addproject',
+        name: 'updateproject',
+        props: ['study'],
         components: {
             Study
         }
