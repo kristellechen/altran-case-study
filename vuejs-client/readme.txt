@@ -12,3 +12,6 @@ Vue.use(BootstrapVue)
 npm install @fortawesome/fontawesome-free
 add this to main.js
 import '@fortawesome/fontawesome-free/css/all.css' // Ensure you are using css-loader
+
+npm install axios
+const axios = require('axios');
