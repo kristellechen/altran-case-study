@@ -1,11 +1,23 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link>
-    </div>
+    <Header fixed='top'/>
     <router-view/>
   </div>
 </template>
+
+<script>
+
+  // @ is an alias to /src
+  import Header from '@/components/Header.vue'
+
+  export default {
+    name: 'app',
+    components: {
+      Header
+    }
+  }
+
+</script>
 
 <style>
 #app {
