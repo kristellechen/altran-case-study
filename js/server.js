@@ -1,7 +1,7 @@
 module.exports = {
 
-  // Get Engagement Table
-  getEngagementList () {
+  // Get Services Table
+  getServicesList () {
     return new Promise((resolve, reject) => {
       const json = [
         {
@@ -62,8 +62,8 @@ module.exports = {
     })
   },
 
-  // Get Services Table
-  getServicesList () {
+  // Get Engagement Table
+  getEngagementList () {
     return new Promise((resolve, reject) => {
       const json = [{ id: 1, data: 'Software Development' }, { id: 2, data: 'Product Consulting' }, { id: 3, data: 'System Development' }, { id: 4, data: 'Process Consulting' }]
       resolve(json)
