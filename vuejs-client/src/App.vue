@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header fixed='top'/>
+    <Header />
     <router-view/>
   </div>
 </template>

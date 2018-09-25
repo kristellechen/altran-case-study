@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <div class='ml-5 mr-5 mb-5'>
     <b-row>
       <b-button @click.prevent='refresh' class='ml-5 mt-2 mb-2'>Refresh</b-button>
     </b-row>
-    <table class='table table-striped ml-5 mt-2 mb-2'>
+    <table class='table table-striped'>
       <thead>
         <th>Client</th>
         <th>Project</th>
