@@ -18,6 +18,14 @@ npm install mongoose
 Install standard-js from Sam Chen
 To autofix formatting. stop server and run 'standard --fix'
 
+https://www.npmjs.com/package/vue-toasted
+npm install vue-toasted --save
+import Toasted from 'vue-toasted';
+Vue.use(Toasted)
+
+https://vue-multiselect.js.org/#sub-multiple-select
+npm install vue-multiselect
+
 Reading guide : https://github.com/bradtraversy/bookstore
 
 Good tool to get : Postman
