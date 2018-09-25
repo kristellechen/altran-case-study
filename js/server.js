@@ -6,13 +6,13 @@ mongoose.connect('mongodb://localhost:27017/AltranCaseStudies', {useNewUrlParser
 
 mongoose.Promise = Promise
 
-EngagementTypes = require('../models/engagement')
-Keywords = require('../models/keyword')
-Services = require('../models/service')
+let EngagementTypes = require('../models/engagement')
+let Keywords = require('../models/keyword')
+let Services = require('../models/service')
 
-//EngagementTypes.loadEngagementTypes()
-//Keywords.loadKeywords()
-//Services.loadServices()
+// EngagementTypes.loadEngagementTypes()
+// Keywords.loadKeywords()
+// Services.loadServices()
 
 module.exports = {
 
@@ -26,13 +26,13 @@ module.exports = {
   },
 
   // Get Engagement Table
-  getEngagementList () {
+  getEngagementList() {
     return new Promise((resolve, reject) => {
       EngagementTypes.getEngagementTypes((engagements) => {
         resolve(engagements)
       })
     })
-},
+  },
 
   // Get the Keyword Table
   getKeywordList() {
