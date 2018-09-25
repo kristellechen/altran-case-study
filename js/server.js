@@ -10,6 +10,10 @@ EngagementTypes = require('../models/engagement')
 Keywords = require('../models/keyword')
 Services = require('../models/service')
 
+//EngagementTypes.loadEngagementTypes()
+//Keywords.loadKeywords()
+//Services.loadServices()
+
 module.exports = {
 
   // Get Services Table
