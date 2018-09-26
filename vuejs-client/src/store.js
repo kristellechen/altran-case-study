@@ -23,15 +23,12 @@ export default new Vuex.Store({
 
       return p1.then(resp => {
         context.state.services = resp
-        console.log(resp)
       })
         .then(p2.then(resp => {
           context.state.engagementTypes = resp
-          console.log(resp)
         }))
         .then(p3.then(resp => {
           context.state.keywords = resp
-          console.log(resp)
         })).catch(err => {
           console.log(err)
         })

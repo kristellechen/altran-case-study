@@ -2,7 +2,13 @@
   <div class='ml-5 mr-5 mb-5'>
     <b-row>
       <b-button @click.prevent='refresh' class='ml-5 mt-2 mb-2'>Refresh</b-button>
+      <b-btn v-b-toggle.collapse1 variant="primary">Toggle Collapse</b-btn>
     </b-row>
+    <b-collapse id="collapse1" class="mt-2">
+      <b-card>
+        <Search />
+      </b-card>
+    </b-collapse>
     <table class='table table-striped'>
       <thead>
         <th>Client</th>
@@ -20,6 +26,13 @@
         <td>{{study.Engagement}}</td>
         <td>{{study.Industry}}</td>
         <td>{{study.Discipline}}</td>
+        <td>
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-secondary"><i class="fas fa-edit"></i></button>
+            <button type="button" class="btn btn-secondary"><i class="fas fa-trash-alt"></i></button>
+            <button type="button" class="btn btn-secondary"><i class="fas fa-file-export"></i></button>
+          </div>
+        </td>
       </tr>
     </table>
   </div>
@@ -27,6 +40,7 @@
 
 <script>
   import server from '@/js/server'
+  import Search from '@/components/Search.vue'
 
   export default {
     name: 'home',
@@ -35,11 +49,14 @@
         studies: []
       }
     },
+    components: {
+      Search
+    },
     methods: {
       refresh: function () {
         this.studies = server.getStudies()
       },
-      update: function(study){
+      update: function (study) {
         const tmpStudy = JSON.parse(JSON.stringify(study))
         this.$router.push({
           name: 'updateproject',
