@@ -62,8 +62,8 @@
     </div>
     <div class='row'>
       <div class='col-1'>Services</div>
-      <div class='col-5'> <input type='text' id='inlineFormInputGroup' class='form-control' placeholder='Client'
-          v-model='study.Services'>
+      <div class='col-5'>
+        <Multiselect v-model='selectedServices' :options='servicesOpts' :multiple='true'></Multiselect>
       </div>
       <div class='col-1'>Solution</div>
       <div class='col-5'> <input type='text' id='inlineFormInputGroup' class='form-control' placeholder='Client'
@@ -94,8 +94,19 @@
 </template>
 
 <script>
+  import Multiselect from 'vue-multiselect'
+
   export default {
     name: 'Study',
+    components:{
+      Multiselect
+    },
+    data() {
+      return {
+        servicesOpts: ['One', 'Two', 'Three'],
+        selectedServices: []
+      }
+    },
     props: ['study'],
     methods: {
       updateStudy: function () {

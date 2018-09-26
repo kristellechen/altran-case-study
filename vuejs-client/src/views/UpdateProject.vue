@@ -1,5 +1,6 @@
 <template>
     <div>
+        <Toasted href='toasted'/>
         <div class='m-5'>
             <div class='card'>
                 <div class='card-header'>Update Case Study</div>
@@ -27,6 +28,12 @@
 <script>
     import Study from '@/components/Study.vue'
 
+    let toastrOpts = {
+        duration: 3000,
+        fullWidth: true,
+        position: 'top-center'
+    }
+
     export default {
         name: 'updateproject',
         data() {
@@ -43,7 +50,8 @@
             updateProject: function () {
                 this.message = 'update failed'
                 this.hasError = true
-                alert(`update Project - ${this.study.Client}`)
+                var msg = `update Project - ${this.study.Client}`
+                this.$toasted.show(msg, toastrOpts)
             }
         }
     }
