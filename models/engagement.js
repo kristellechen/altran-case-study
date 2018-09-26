@@ -41,14 +41,14 @@ module.exports.getEngagementTypes = (callback, limit) => {
 }
 
 // UPDATE EngagementTypes
-module.exports.updateEngagementType = (name, engagement, options, callback) => {
-  var query = { name: name }
+module.exports.updateEngagementType = (id, engagement, options, callback) => {
+  var query = { _id: id }
   var update = { name: engagement.name }
   EngagementTypes.findOneAndUpdate(query, update, options, callback)
 }
 
 // DELETE EngagementTypes
-module.exports.removeEngagementType = (name, callback) => {
-  var query = { name: name }
+module.exports.removeEngagementType = (id, callback) => {
+  var query = { _id: id }
   EngagementTypes.deleteOne(query, callback)
 }

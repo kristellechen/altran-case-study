@@ -9,10 +9,12 @@ mongoose.Promise = Promise
 let EngagementTypes = require('../models/engagement')
 let Keywords = require('../models/keyword')
 let Services = require('../models/service')
+let CaseStudies = require('../models/caseStudy')
 
 // EngagementTypes.loadEngagementTypes()
 // Keywords.loadKeywords()
 // Services.loadServices()
+// CaseStudies.loadCaseStudies()
 
 module.exports = {
 
@@ -39,6 +41,15 @@ module.exports = {
     return new Promise((resolve, reject) => {
       Keywords.getKeywords((keys) => {
         resolve(keys)
+      })
+    })
+  },
+
+  // Get case studies
+  getCaseStudyList() {
+    return new Promise((resolve, reject) => {
+      CaseStudies.getCaseStudies((studies) => {
+        resolve(studies)
       })
     })
   }

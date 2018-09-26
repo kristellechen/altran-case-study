@@ -68,14 +68,14 @@ module.exports.getServices = (callback, limit) => {
 }
 
 // UPDATE Services
-module.exports.updateService = (name, item, options, callback) => {
-  var query = { name: name }
+module.exports.updateService = (id, item, options, callback) => {
+  var query = { _id: id }
   var update = { name: item.name }
   Services.findOneAndUpdate(query, update, options, callback)
 }
 
 // DELETE Services
-module.exports.removeService = (name, callback) => {
-  var query = { name: name }
+module.exports.removeService = (id, callback) => {
+  var query = { _id: id }
   Services.deleteOne(query, callback)
 }
