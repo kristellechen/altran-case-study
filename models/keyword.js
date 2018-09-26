@@ -404,14 +404,14 @@ module.exports.getKeywords = (callback, limit) => {
 }
 
 // UPDATE Keywords
-module.exports.updateKeyword = (name, keyword, options, callback) => {
-  var query = { name: name }
+module.exports.updateKeyword = (id, keyword, options, callback) => {
+  var query = { _id: id }
   var update = { name: keyword.name }
   Keywords.findOneAndUpdate(query, update, options, callback)
 }
 
 // DELETE Keywords
-module.exports.removeKeyword = (name, callback) => {
-  var query = { name: name }
+module.exports.removeKeyword = (id, callback) => {
+  var query = { _id: id }
   Keywords.deleteOne(query, callback)
 }
