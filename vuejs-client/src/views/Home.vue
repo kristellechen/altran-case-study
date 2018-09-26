@@ -26,7 +26,7 @@
 </template>
 
 <script>
-  let server = require('@/js/server')
+  import server from '@/js/server'
 
   export default {
     name: 'home',

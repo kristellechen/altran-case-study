@@ -63,7 +63,7 @@
     <div class='row'>
       <div class='col-1'>Services</div>
       <div class='col-5'>
-        <Multiselect v-model='selectedServices' :options='servicesOpts' :multiple='true'></Multiselect>
+        <Multiselect v-model='selectedServices' :options='services' :multiple='true'></Multiselect>
       </div>
       <div class='col-1'>Solution</div>
       <div class='col-5'> <input type='text' id='inlineFormInputGroup' class='form-control' placeholder='Client'
@@ -98,16 +98,26 @@
 
   export default {
     name: 'Study',
-    components:{
+    components: {
       Multiselect
     },
     data() {
       return {
-        servicesOpts: ['One', 'Two', 'Three'],
         selectedServices: []
       }
     },
     props: ['study'],
+    computed: {
+      services() {
+        return this.$store.state.services
+      },
+      keywords() {
+        return this.$store.state.keywords
+      },
+      engagements() {
+        return this.$store.state.engagements
+      }
+    },
     methods: {
       updateStudy: function () {
         alert('update the case study')

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-let server = require('@/js/server.js')
+import server from '@/js/server.js'
 
 Vue.use(Vuex)
 
@@ -22,12 +22,15 @@ export default new Vuex.Store({
       var p3 = server.getKeywordList()
 
       return p1.then(resp => {
+        context.state.services = resp
         console.log(resp)
       })
         .then(p2.then(resp => {
+          context.state.engagementTypes = resp
           console.log(resp)
         }))
         .then(p3.then(resp => {
+          context.state.keywords = resp
           console.log(resp)
         })).catch(err => {
           console.log(err)

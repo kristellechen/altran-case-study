@@ -3,21 +3,30 @@ let axios = require('axios')
 const fs = require('@/js/studies')
 const baseURL = 'http://localhost:3000'
 
-module.exports = {
-  getStudies () {
+export default {
+  getStudies: function () {
     return fs.getStudies()
   },
   // Get Services Table
-  getServicesList () {
-    return axios.get(`${baseURL}/services-table`)
+  getServicesList: function () {
+    return new Promise((resolve, reject) => {
+      resolve(['1', '2', '3'])
+    })
+    // return axios.get(`${baseURL}/services-table`)
   },
   // Get Engagement Table
-  getEngagementList () {
-    return axios.get(`${baseURL}/engagement-table`)
+  getEngagementList: function () {
+    return new Promise((resolve, reject) => {
+      resolve(['1', '2', '3'])
+    })
+    // return axios.get(`${baseURL}/engagement-table`)
   },
 
   // Get the Keyword Table
-  getKeywordList () {
-    return axios.get(`${baseURL}/keyword-table`)
+  getKeywordList: function () {
+    return new Promise((resolve, reject) => {
+      resolve(['1', '2', '3'])
+    })
+    // return axios.get(`${baseURL}/keyword-table`)
   }
 }
