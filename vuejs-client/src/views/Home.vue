@@ -2,11 +2,11 @@
   <div class='ml-5 mr-5 mb-5'>
     <b-row>
       <b-button @click.prevent='refresh' class='ml-5 mt-2 mb-2'>Refresh</b-button>
-      <b-btn v-b-toggle.collapse1 variant="primary">Toggle Collapse</b-btn>
+      <b-button v-b-toggle.collapse1 variant="primary">Toggle Collapse</b-button>
     </b-row>
     <b-collapse id="collapse1" class="mt-2">
       <b-card>
-        <Search />
+        <Search v-on:onSearch='doSearch'/>
       </b-card>
     </b-collapse>
     <table class='table table-striped'>
@@ -55,6 +55,9 @@
     methods: {
       refresh: function () {
         this.studies = server.getStudies()
+      },
+      doSearch: function(payload) {
+        alert(JSON.stringify(payload))
       },
       update: function (study) {
         const tmpStudy = JSON.parse(JSON.stringify(study))

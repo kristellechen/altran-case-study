@@ -1,12 +1,25 @@
 <template>
- <div>
-     <h1>Search Component</h1>
- </div>
+  <div>
+    <h1>Search Component</h1>
+    <b-btn @click='doSearch'>Search</b-btn>
+  </div>
 </template>
 
 <script>
   export default {
-    name: 'Search'
+    name: 'Search',
+    data() {
+      return {
+        searchPayload: {
+          Client: 'clieney'
+        }
+      }
+    },
+    methods: {
+      doSearch() {
+        this.$emit('onSearch', this.searchPayload)
+      }
+    }
   }
 </script>
 
