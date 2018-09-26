@@ -9,7 +9,11 @@ router.get('/', function (req, res, next) {
 
 // Get all studies
 router.get('/studies', function (req, res, next) {
-  res.send('list of studies')
+  server.getCaseStudyList().then(resp => {
+    res.json(resp)
+  }).catch(err => {
+    res.json(err)
+  })
 })
 
 // Get a study by id.
