@@ -7,7 +7,7 @@
       </div>
       <div class='col-1'>Engagement</div>
       <div class='col-5'>
-        <input type='text' id='inlineFormInputGroup' class='form-control' placeholder='Client' v-model='study.Engagement'>
+        <Multiselect v-model='selectedEngagementTypes' :options='engagementTypes' :multiple='true'></Multiselect>
       </div>
     </div>
     <div class='row'>
@@ -46,8 +46,8 @@
           v-model='study.Industry'>
       </div>
       <div class='col-1'>Keywords</div>
-      <div class='col-5'> <input type='text' id='inlineFormInputGroup' class='form-control' placeholder='Client'
-          v-model='study.Keywords'>
+      <div class='col-5'>
+        <Multiselect v-model='selectedKeywords' :options='keywords' :multiple='true'></Multiselect>
       </div>
     </div>
     <div class='row'>
@@ -103,24 +103,21 @@
     },
     data() {
       return {
-        selectedServices: []
+        selectedServices: [],
+        selectedKeywords: [],
+        selectedEngagementTypes: []
       }
     },
     props: ['study'],
     computed: {
       services() {
-        return this.$store.state.services
+        return this.$store.state.services.map(a => a.name)
       },
       keywords() {
-        return this.$store.state.keywords
+        return this.$store.state.keywords.map(a => a.name)
       },
-      engagements() {
-        return this.$store.state.engagements
-      }
-    },
-    methods: {
-      updateStudy: function () {
-        alert('update the case study')
+      engagementTypes() {
+        return this.$store.state.engagementTypes.map(a => a.name)
       }
     }
   }
