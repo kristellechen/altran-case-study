@@ -9,10 +9,10 @@ export default new Vuex.Store({
     services: [],
     engagementTypes: [],
     keywords: [],
-    studies: []
+    studies: [],
+    isBusy: false
   },
   mutations: {
-
   },
   actions: {
     // Get the services, engagement-type and keywords from the server once.
@@ -21,6 +21,9 @@ export default new Vuex.Store({
       var p1 = server.getServicesList()
       var p2 = server.getEngagementList()
       var p3 = server.getKeywordList()
+      var p4 = server.getStudies()
+
+      context.state.isBusy = true
 
       return p1.then(resp => {
         context.state.services = resp.data
@@ -30,7 +33,12 @@ export default new Vuex.Store({
         }))
         .then(p3.then(resp => {
           context.state.keywords = resp.data
-        })).catch(err => {
+        })).then(p4.then(resp => {
+          context.state.studies = resp.data
+        })).then(resp => {
+          context.state.isBusy = false
+        }).catch(err => {
+          context.state.isBusy = false
           console.log(err)
           throw (err)
         })

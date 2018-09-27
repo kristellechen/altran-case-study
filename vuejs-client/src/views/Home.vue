@@ -1,7 +1,7 @@
 <template>
   <div class='ml-5 mr-5 mb-5'>
     <b-row>
-      <b-button @click.prevent='refresh' class='ml-5 mt-2 mb-2'>Refresh</b-button>
+      <b-button v-b-toggle.collapse1 class='ml-3 mt-2 mb-2'>Search</b-button>
     </b-row>
     <b-collapse id='collapse1' class='mt-2'>
       <b-card>
@@ -13,7 +13,7 @@
         <th>Client</th>
         <th>Project</th>
         <th>Keyword</th>
-        <th>Engagement Type</th>
+        <th>Engagement</th>
         <th>Industry</th>
         <th>Discipline</th>
         <th>Action</th>
@@ -65,17 +65,10 @@
       }
     },
     methods: {
-      refresh: function () {
-        this.$store.dispatch('getStudies').then(resp => {
-          alert('getStudies completed')
-        }).catch(err => {
-          alert(err.message)
-        })
-      },
       doSearch: function (payload) {
         alert(JSON.stringify(payload))
       },
-      editStudy: function (study, evt) {
+      editStudy: function (study) {
         const tmpStudy = JSON.parse(JSON.stringify(study))
         this.$router.push({
           name: 'updateproject',
@@ -83,7 +76,6 @@
             study: tmpStudy // clone the object
           }
         })
-        evt.stopPropagation()
       },
       deleteStudy: function (study) {
         this.$refs['deleteConfirmation'].show()

@@ -108,6 +108,17 @@
         selectedEngagementTypes: []
       }
     },
+    watch: {
+      selectedServices: function (array) {
+        this.study.services = array.join(', ')
+      },
+      selectedKeywords: function (array) {
+        this.study.keywords = array.join(', ')
+      },
+      selectedEngagementTypes: function (array) {
+        this.study.engagementType = array.join(', ')
+      }
+    },
     props: ['study'],
     computed: {
       services() {
@@ -119,6 +130,13 @@
       engagementTypes() {
         return this.$store.state.engagementTypes.map(a => a.name)
       }
+    },
+    methods: {},
+    mounted() {
+      // When this components is mounted, convert strings to the multiselect controls.
+      this.selectedServices = this.study.services.split(',')
+      this.selectedKeywords = this.study.keywords.split(',')
+      this.selectedEngagementTypes = this.study.engagementType.split(',')
     }
   }
 </script>

@@ -49,8 +49,7 @@
         methods: {
             updateProject: function () {
                 this.message = 'update failed'
-                this.hasError = true
-                var msg = `update Project - ${this.study.Client}`
+                var msg = `update Project - ${this.study.keywords}`
                 this.$toasted.show(msg, toastrOpts)
             }
         }
