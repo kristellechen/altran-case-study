@@ -19,26 +19,41 @@ router.get('/studies', function (req, res, next) {
 // Get a study by id.
 // localhost:3000/studies/1000
 router.get('/studies/:id', function (req, res, next) {
-  res.send(`Get study with id = ${req.params.id}`)
+  server.getCaseStudyById(req.params.id).then(resp => {
+    res.json(resp)
+  }).catch(err => {
+    res.json(err)
+  })
 })
 
 // Update a study.
 // localhost:3000/studies/1000
 router.put('/studies/:id', function (req, res) {
-  res.send(`Update study with id = ${req.params.id}`)
+  server.updateCaseStudy(req.params.id, req.body).then(resp => {
+    res.json(resp)
+  }).catch(err => {
+    res.json(err)
+  })
 })
 
 // Create a study.
 // localhost:3000/studies
 router.post('/studies', function (req, res) {
-  var body = JSON.stringify(req.body)
-  res.send(`Create a new study with id = ${body}`)
+  server.addCaseStudy(req.body).then(resp => {
+    res.json(resp)
+  }).catch(err => {
+    res.json(err)
+  })
 })
 
 // Delete a study.
 // localhost:3000/studies/1000
 router.delete('/studies/:id', function (req, res) {
-  res.send(`Delete study with id = ${req.params.id}`)
+  server.deleteCaseStudy(req.params.id).then(resp => {
+    res.json(resp)
+  }).catch(err => {
+    res.json(err)
+  })
 })
 
 // Get Engagement Table

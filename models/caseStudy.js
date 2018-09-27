@@ -260,7 +260,7 @@ module.exports.loadCaseStudies = (callback) => {
 
 // ADD case studies
 module.exports.addCaseStudy = (study, callback) => {
-  CaseStudies.create(study, callback)
+  CaseStudies.create(study).then(callback)
 }
 
 // GET case studies
@@ -270,11 +270,11 @@ module.exports.getCaseStudies = (callback, limit) => {
 
 // GET case studies by id
 module.exports.getCaseStudyById = (id, callback) => {
-  CaseStudies.findById(id, callback)
+  CaseStudies.findById(id).exec().then(callback)
 }
 
 // UPDATE case studies
-module.exports.updateCaseStudies = (id, study, options, callback) => {
+module.exports.updateCaseStudies = (id, study, callback) => {
   var query = {_id: id }
   var update = {
     caseId: study.caseId,
@@ -297,7 +297,8 @@ module.exports.updateCaseStudies = (id, study, options, callback) => {
     team: study.team,
     images: study.images
   }
-  CaseStudies.findOneAndUpdate(query, update, options, callback)
+  options = {new:true}
+  CaseStudies.findOneAndUpdate(query, update, options).exec().then(callback)
 }
 
 // DELETE case studies
