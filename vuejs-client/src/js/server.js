@@ -9,24 +9,15 @@ export default {
   },
   // Get Services Table
   getServicesList: function () {
-    return new Promise((resolve, reject) => {
-      resolve(fs.getServices())
-    })
-    // return axios.get(`${baseURL}/services-table`)
+    return axios.get(`${baseURL}/services-table`)
   },
   // Get Engagement Table
   getEngagementList: function () {
-    return new Promise((resolve, reject) => {
-      resolve(fs.getEngagementTypes())
-    })
-    // return axios.get(`${baseURL}/engagement-table`)
+    return axios.get(`${baseURL}/engagement-table`)
   },
 
   // Get the Keyword Table
   getKeywordList: function () {
-    return new Promise((resolve, reject) => {
-      resolve(fs.getKeywords())
-    })
-    // return axios.get(`${baseURL}/keyword-table`)
+    return axios.get(`${baseURL}/keyword-table`)
   }
 }

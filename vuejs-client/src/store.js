@@ -22,15 +22,16 @@ export default new Vuex.Store({
       var p3 = server.getKeywordList()
 
       return p1.then(resp => {
-        context.state.services = resp
+        context.state.services = resp.data
       })
         .then(p2.then(resp => {
-          context.state.engagementTypes = resp
+          context.state.engagementTypes = resp.data
         }))
         .then(p3.then(resp => {
-          context.state.keywords = resp
+          context.state.keywords = resp.data
         })).catch(err => {
           console.log(err)
+          throw (err)
         })
     }
   }
