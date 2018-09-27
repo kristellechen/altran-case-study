@@ -3,91 +3,91 @@
     <div class='row'>
       <div class='col-1'>Client</div>
       <div class='col-5'>
-        <input type='text' id='inlineFormInputGroup' class='form-control' placeholder='Client' v-model='study.Client'>
+        <input type='text' id='inlineFormInputGroup' class='form-control' placeholder='Client' v-model='study.client'>
       </div>
       <div class='col-1'>Engagement</div>
       <div class='col-5'>
-        <input type='text' id='inlineFormInputGroup' class='form-control' placeholder='Client' v-model='study.Engagement'>
+        <Multiselect v-model='selectedEngagementTypes' :options='engagementTypes' :multiple='true'></Multiselect>
       </div>
     </div>
     <div class='row'>
       <div class='col-1'>Project</div>
       <div class='col-5'> <input type='text' id='inlineFormInputGroup' class='form-control' placeholder='Client'
-          v-model='study.ProjectName'>
+          v-model='study.projectName'>
       </div>
       <div class='col-1'>Discipline</div>
       <div class='col-5'> <input type='text' id='inlineFormInputGroup' class='form-control' placeholder='Client'
-          v-model='study.Discipline'>
+          v-model='study.discipline'>
       </div>
     </div>
     <div class='row'>
       <div class='col-1'>Year</div>
       <div class='col-5'> <input type='text' id='inlineFormInputGroup' class='form-control' placeholder='Client'
-          v-model='study.Year'>
+          v-model='study.year'>
       </div>
       <div class='col-1'>Summary</div>
       <div class='col-5'> <input type='text' id='inlineFormInputGroup' class='form-control' placeholder='Client'
-          v-model='study.ProjectSummary'>
+          v-model='study.projectSummary'>
       </div>
     </div>
     <div class='row'>
       <div class='col-1'>Brand</div>
       <div class='col-5'> <input type='text' id='inlineFormInputGroup' class='form-control' placeholder='Client'
-          v-model='study.Brand'>
+          v-model='study.brand'>
       </div>
       <div class='col-1'>Project Team</div>
       <div class='col-5'> <input type='text' id='inlineFormInputGroup' class='form-control' placeholder='Client'
-          v-model='study.ProjectTeam'>
+          v-model='study.projectTeam'>
       </div>
     </div>
     <div class='row'>
       <div class='col-1'>Industry</div>
       <div class='col-5'> <input type='text' id='inlineFormInputGroup' class='form-control' placeholder='Client'
-          v-model='study.Industry'>
+          v-model='study.industry'>
       </div>
       <div class='col-1'>Keywords</div>
-      <div class='col-5'> <input type='text' id='inlineFormInputGroup' class='form-control' placeholder='Client'
-          v-model='study.Keywords'>
+      <div class='col-5'>
+        <Multiselect v-model='selectedKeywords' :options='keywords' :multiple='true'></Multiselect>
       </div>
     </div>
     <div class='row'>
       <div class='col-1'>Sector</div>
       <div class='col-5'> <input type='text' id='inlineFormInputGroup' class='form-control' placeholder='Client'
-          v-model='study.Sector'>
+          v-model='study.sector'>
       </div>
       <div class='col-1'>Situation</div>
       <div class='col-5'> <input type='text' id='inlineFormInputGroup' class='form-control' placeholder='Client'
-          v-model='study.Situation'>
+          v-model='study.situation'>
       </div>
     </div>
     <div class='row'>
       <div class='col-1'>Services</div>
       <div class='col-5'>
-        <Multiselect v-model='selectedServices' :options='servicesOpts' :multiple='true'></Multiselect>
+        <Multiselect v-model='selectedServices' :options='services' :multiple='true'></Multiselect>
       </div>
       <div class='col-1'>Solution</div>
       <div class='col-5'> <input type='text' id='inlineFormInputGroup' class='form-control' placeholder='Client'
-          v-model='study.Solution'>
+          v-model='study.solution'>
       </div>
     </div>
     <div class='row'>
       <div class='col-1'>Challenges</div>
       <div class='col-5'> <input type='text' id='inlineFormInputGroup' class='form-control' placeholder='Client'
-          v-model='study.Challenges'>
+          v-model='study.challenges'>
       </div>
       <div class='col-1'>Project Type</div>
       <div class='col-5'> <input type='text' id='inlineFormInputGroup' class='form-control' placeholder='Client'
-          v-model='study.ProjectApplicationType'>
+          v-model='study.projectApplicationType'>
       </div>
     </div>
     <div class='row'>
       <div class='col-1'>Proven Results</div>
       <div class='col-5'> <input type='text' id='inlineFormInputGroup' class='form-control' placeholder='Client'
-          v-model='study.ProvenResults'>
+          v-model='study.provenResults'>
       </div>
       <div class='col-1'>Image</div>
       <div class='col-5'> <input type='text' id='inlineFormInputGroup' class='form-control' placeholder='Client'
-          v-model='study.Images'>
+          v-model='study.images'>
       </div>
     </div>
   </div>
@@ -98,20 +98,45 @@
 
   export default {
     name: 'Study',
-    components:{
+    components: {
       Multiselect
     },
     data() {
       return {
-        servicesOpts: ['One', 'Two', 'Three'],
-        selectedServices: []
+        selectedServices: [],
+        selectedKeywords: [],
+        selectedEngagementTypes: []
+      }
+    },
+    watch: {
+      selectedServices: function (array) {
+        this.study.services = array.join(', ')
+      },
+      selectedKeywords: function (array) {
+        this.study.keywords = array.join(', ')
+      },
+      selectedEngagementTypes: function (array) {
+        this.study.engagementType = array.join(', ')
       }
     },
     props: ['study'],
-    methods: {
-      updateStudy: function () {
-        alert('update the case study')
+    computed: {
+      services() {
+        return this.$store.state.services.map(a => a.name)
+      },
+      keywords() {
+        return this.$store.state.keywords.map(a => a.name)
+      },
+      engagementTypes() {
+        return this.$store.state.engagementTypes.map(a => a.name)
       }
+    },
+    methods: {},
+    mounted() {
+      // When this components is mounted, convert strings to the multiselect controls.
+      this.selectedServices = this.study.services.split(',')
+      this.selectedKeywords = this.study.keywords.split(',')
+      this.selectedEngagementTypes = this.study.engagementType.split(',')
     }
   }
 </script>

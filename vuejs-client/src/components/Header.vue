@@ -4,13 +4,13 @@
       <img src='@/assets/logo.png' width=50dp />
     </b-navbar-brand>
     <b-nav-item>
-      <router-link to='Home'>Home</router-link>
+      <router-link to='/Home'>Home</router-link>
     </b-nav-item>
     <b-nav-item>
-      <router-link to='AddProject'>Add Project</router-link>
+      <router-link to='/AddProject'>Add Project</router-link>
     </b-nav-item>
     <b-nav-item>
-      <router-link to='ExportSettings'>Export Settings</router-link>
+      <router-link to='/ExportSettings'>Export Settings</router-link>
     </b-nav-item>
     <b-nav-item href="#">Logout</b-nav-item>
     <b-nav-item href="#">Search</b-nav-item>

@@ -23,7 +23,7 @@
     },
     mounted() {
       this.$store.dispatch('initialize').then(resp => {
-        this.$toasted.show('initialized')
+        this.$toasted.show('initialized', toastrOpts)
       }).catch(err => {
         this.$toasted.show(err.message, toastrOpts)
       })
