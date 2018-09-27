@@ -1,11 +1,10 @@
 let axios = require('axios')
 
-const fs = require('@/js/studies')
 const baseURL = 'http://localhost:3000'
 
 export default {
   getStudies: function () {
-    return fs.getStudies()
+    return axios.get(`${baseURL}/studies`)
   },
   // Get Services Table
   getServicesList: function () {

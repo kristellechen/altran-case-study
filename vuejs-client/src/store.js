@@ -8,7 +8,8 @@ export default new Vuex.Store({
   state: {
     services: [],
     engagementTypes: [],
-    keywords: []
+    keywords: [],
+    studies: []
   },
   mutations: {
 
@@ -33,6 +34,15 @@ export default new Vuex.Store({
           console.log(err)
           throw (err)
         })
+    },
+    getStudies (context) {
+      server.getStudies().then(resp => {
+        console.log(resp.data)
+        context.state.studies = resp.data
+      }).catch(err => {
+        context.state.message = `Getting studies failed. ${err.message}`
+        throw (err)
+      })
     }
   }
 })
