@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const pptxgenjs = require('pptxgenjs')
 
 mongoose.connect('mongodb://localhost:27017/AltranCaseStudies', { useNewUrlParser: true })
   .then(() => console.log('mongoDB connected'))
@@ -10,6 +11,7 @@ let EngagementTypes = require('../models/engagement')
 let Keywords = require('../models/keyword')
 let Services = require('../models/service')
 let CaseStudies = require('../models/caseStudy')
+let SlideMaker = require('../js/slidesMaker')
 
 // EngagementTypes.loadEngagementTypes()
 // Keywords.loadKeywords()
@@ -81,12 +83,24 @@ module.exports = {
     // })
   },
 
-  deleteCaseStudy (id) {
+  deleteCaseStudy(id) {
     return CaseStudies.removeCaseStudy(id)
     // return new Promise((resolve, reject) => {
-    //   CaseStudies.removeCaseStudy(id, (deleted) => {
+    //   CaseStudies.removeCaseStudies(id, (deleted) => {
     //     resolve(deleted)
     //   })
     // })
-  }
+  },
+
+  createHITSlide(id) {
+    return new Promise((resolve, reject) => {
+      var pptx = new pptxgenjs()
+      SlideMaker.defineMasterSlideTemplate(pptx)
+      pptx.setLayout('LAYOUT_WIDE')
+      SlideMaker.createSlide(pptx, 'HIT_TITLE_SLIDE', (presentation) => {
+        console.log('done')
+        resolve(presentation)
+        })
+      })
+    }
 }
