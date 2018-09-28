@@ -83,4 +83,15 @@ router.get('/keyword-table', function (req, res, next) {
   })
 })
 
+// Create a presentation.
+// localhost:3000/presentation
+router.post('/presentation/:id', function (req, res) {
+  server.createHITSlide(req.params.id).then(resp => {
+    res.json(resp)
+  }).catch(err => {
+    res.json(err)
+  })
+})
+
+
 module.exports = router
