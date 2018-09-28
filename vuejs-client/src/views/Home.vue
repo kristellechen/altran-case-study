@@ -85,14 +85,15 @@
         })
       },
       deleteStudy: function (study) {
+        this.selectedStudyId = study._id
         this.$refs['deleteConfirmation'].show()
       },
       exportStudy: function (study) {
         alert('export study')
       },
       doDeleteStudy: function () {
-        alert('doDeleteStudy')
-        this.$store.dispatch('deleteStudy').then(resp => {
+        alert(`doDeleteStudy - ${this.selectedStudyId}`)
+        this.$store.dispatch('deleteStudy', this.selectedStudyId).then(resp => {
           this.$toasted.show(this.$store.getters.message, toastrOpts)
         }).catch(err => {
           this.$toasted.show(this.$store.getters.message, toastrOpts)

@@ -45,7 +45,6 @@ export default new Vuex.Store({
     },
     getStudies (context) {
       server.getStudies().then(resp => {
-        console.log(resp.data)
         context.state.studies = resp.data
       }).catch(err => {
         context.state.message = `Getting studies failed. ${err.message}`
@@ -68,9 +67,8 @@ export default new Vuex.Store({
       })
     },
     deleteStudy (context, studyId) {
-      context.state.message = 'vuex-deleteStudy'
       server.deleteCaseStudy(studyId).then(resp => {
-        var idx = context.state.studies.indexOf(s => s._id === studyId)
+        var idx = context.state.studies.findIndex(s => s._id === studyId)
         if (idx > -1) {
           context.state.studies.splice(idx, 1)
           context.state.message = `${studyId} has been deleted.`
@@ -84,6 +82,7 @@ export default new Vuex.Store({
     },
     createStudy (context, newStudy) {
       server.createCaseStudy(newStudy).then(resp => {
+        context.state.message = 'New case study created successfully'
       }).catch(err => {
         context.state.message = `Creating new case study failed.  ${err.message}`
         throw (new Error(context.state.message))

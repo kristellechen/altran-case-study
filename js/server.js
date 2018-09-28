@@ -83,7 +83,7 @@ module.exports = {
     // })
   },
 
-  deleteCaseStudy(id) {
+  deleteCaseStudy (id) {
     return CaseStudies.removeCaseStudy(id)
     // return new Promise((resolve, reject) => {
     //   CaseStudies.removeCaseStudies(id, (deleted) => {
@@ -92,7 +92,7 @@ module.exports = {
     // })
   },
 
-  createHITSlide(id) {
+  createHITSlide (id) {
     return new Promise((resolve, reject) => {
       var pptx = new pptxgenjs()
       SlideMaker.defineMasterSlideTemplate(pptx)
@@ -100,7 +100,7 @@ module.exports = {
       SlideMaker.createSlide(pptx, 'HIT_TITLE_SLIDE', (presentation) => {
         console.log('done')
         resolve(presentation)
-        })
       })
-    }
+    })
+  }
 }

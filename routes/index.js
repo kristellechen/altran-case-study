@@ -42,7 +42,7 @@ router.post('/studies', function (req, res) {
   server.addCaseStudy(req.body).then(resp => {
     res.json(resp)
   }).catch(err => {
-    res.json(err)
+    res.status(500).json(err)
   })
 })
 
@@ -92,6 +92,5 @@ router.post('/presentation/:id', function (req, res) {
     res.json(err)
   })
 })
-
 
 module.exports = router
