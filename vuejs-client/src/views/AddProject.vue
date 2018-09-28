@@ -51,8 +51,13 @@
         methods: {
             createProject: function () {
                 server.createCaseStudy(this.newStudy).then(resp => {
-                    this.$toasted.show('New case study created successfully')
-                }).catch (err => {
+                    console.log(resp)
+                    if (resp.status === 200) {
+                        this.$toasted.show('New case study created successfully')
+                    } else {
+                        this.$toasted.show('Creating new case study failed.')
+                    }
+                }).catch(err => {
                     this.$toasted.show(err.message, toastrOpts)
                 })
             }
