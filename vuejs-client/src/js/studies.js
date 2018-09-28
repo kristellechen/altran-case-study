@@ -1,5 +1,31 @@
 module.exports = {
 
+  // Get an  empty study stub used for creating a new study.
+  getNewStudy () {
+    return {
+      caseId: '',
+      client: 'new client name',
+      projectName: '',
+      year: '2018',
+      brand: '',
+      industry: '',
+      sector: '',
+      services: '',
+      projectType: '',
+      engagementType: '',
+      discipline: '',
+      technologies: '',
+      keywordLookup: '',
+      challenges: '',
+      solution: '',
+      provenResults: '',
+      keywords: '',
+      summary: '',
+      team: '',
+      images: ''
+    }
+  },
+
   getStudies () {
     return [{
       'ID': 1,

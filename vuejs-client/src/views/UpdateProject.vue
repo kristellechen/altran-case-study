@@ -52,17 +52,8 @@
                 this.$store.dispatch('updateStudy', this.study).then(resp => {
                     this.$toasted.show('Case study updated successfully', toastrOpts)
                 }).catch (err => {
-                    this.$toasted.show(err.message, toastrOpts)                    
+                    this.$toasted.show(err.message, toastrOpts)
                 })
-                // server.updateCaseStudy(this.study).then(resp => {
-                //     this.hasError = false
-                //     this.message = JSON.stringify(resp)
-                //     this.$toasted.show('Case study updated successfully', toastrOpts)
-                // }).catch (err => {
-                //     this.hasError = true
-                //     this.message = err.message
-                //     this.$toasted.show(err.message, toastrOpts)
-                // })
             }
         }
     }

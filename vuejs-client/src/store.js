@@ -66,6 +66,28 @@ export default new Vuex.Store({
         context.state.message = `Updating study failed.  ${err.message}`
         throw (new Error(context.state.message))
       })
+    },
+    deleteStudy (context, studyId) {
+      context.state.message = 'vuex-deleteStudy'
+      server.deleteCaseStudy(studyId).then(resp => {
+        var idx = context.state.studies.indexOf(s => s._id === studyId)
+        if (idx > -1) {
+          context.state.studies.splice(idx, 1)
+          context.state.message = `${studyId} has been deleted.`
+        } else {
+          throw (new Error('Study was not found'))
+        }
+      }).catch(err => {
+        context.state.message = `Deleting study failed.  ${err.message}`
+        throw (new Error(context.state.message))
+      })
+    },
+    createStudy (context, newStudy) {
+      server.createCaseStudy(newStudy).then(resp => {
+      }).catch(err => {
+        context.state.message = `Creating new case study failed.  ${err.message}`
+        throw (new Error(context.state.message))
+      })
     }
   }
 })
