@@ -22,7 +22,7 @@ router.get('/studies/:id', function (req, res, next) {
   server.getCaseStudyById(req.params.id).then(resp => {
     res.json(resp)
   }).catch(err => {
-    res.json(err)
+    res.status(500).json(err)
   })
 })
 
@@ -32,7 +32,7 @@ router.put('/studies/:id', function (req, res) {
   server.updateCaseStudy(req.params.id, req.body).then(resp => {
     res.json(resp)
   }).catch(err => {
-    res.json(err)
+    res.status(500).json(err)
   })
 })
 

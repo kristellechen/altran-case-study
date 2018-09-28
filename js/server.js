@@ -30,7 +30,7 @@ module.exports = {
   },
 
   // Get Engagement Table
-  getEngagementList() {
+  getEngagementList () {
     return new Promise((resolve, reject) => {
       EngagementTypes.getEngagementTypes((engagements) => {
         resolve(engagements)
@@ -48,7 +48,7 @@ module.exports = {
   },
 
   // Get case studies
-  getCaseStudyList() {
+  getCaseStudyList () {
     return new Promise((resolve, reject) => {
       CaseStudies.getCaseStudies((studies) => {
         resolve(studies)
@@ -56,36 +56,40 @@ module.exports = {
     })
   },
 
-  getCaseStudyById(id) {
-    return new Promise((resolve, reject) => {
-      CaseStudies.getCaseStudyById(id, (study) => {
-        resolve(study)
-      })
-    })
+  getCaseStudyById (id) {
+    return CaseStudies.getCaseStudyById(id)
+    // return new Promise((resolve, reject) => {
+    //   CaseStudies.getCaseStudyById(id, (study) => {
+    //     resolve(study)
+    //   })
+    // })
   },
 
-  addCaseStudy(study) {
-    return new Promise((resolve, reject) => {
-      CaseStudies.addCaseStudy(study, (added) => {
-        resolve(added)
-      })
-    })
+  addCaseStudy (study) {
+    return CaseStudies.addCaseStudy(study)
+    // return new Promise((resolve, reject) => {
+    //   CaseStudies.addCaseStudy(study, (added) => {
+    //     resolve(added)
+    //   })
+    // })
   },
 
-  updateCaseStudy(id, study) {
-    return new Promise((resolve, reject) => {
-      CaseStudies.updateCaseStudies(id, study, (updated) => {
-        resolve(updated)
-      })
-    })
+  updateCaseStudy (id, study) {
+    return CaseStudies.updateCaseStudy(id, study)
+    // return new Promise((resolve, reject) => {
+    //   CaseStudies.updateCaseStudies(id, study, (updated) => {
+    //     resolve(updated)
+    //   })
+    // })
   },
 
   deleteCaseStudy(id) {
-    return new Promise((resolve, reject) => {
-      CaseStudies.removeCaseStudies(id, (deleted) => {
-        resolve(deleted)
-      })
-    })
+    return CaseStudies.removeCaseStudy(id)
+    // return new Promise((resolve, reject) => {
+    //   CaseStudies.removeCaseStudies(id, (deleted) => {
+    //     resolve(deleted)
+    //   })
+    // })
   },
 
   createHITSlide(id) {
@@ -98,5 +102,5 @@ module.exports = {
         resolve(presentation)
         })
       })
-  }
+    }
 }

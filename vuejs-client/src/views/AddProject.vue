@@ -1,11 +1,11 @@
 <template>
     <div>
-        <Toasted href='toasted'/>
+        <Toasted href='toasted' />
         <div class='m-5'>
             <div class='card'>
                 <div class='card-header'>Add a new case study</div>
                 <div class='card-body'>
-                    <Study v-bind:study='study'></Study>
+                    <Study v-bind:study='newStudy'></Study>
                 </div>
                 <div class='card-footer'>
                     <div class='d-flex justify-content-between'>
@@ -27,6 +27,8 @@
 
 <script>
     import Study from '@/components/Study.vue'
+    import server from '@/js/server'
+    import fs from '@/js/studies.js'
 
     let toastrOpts = {
         duration: 3000,
@@ -38,7 +40,7 @@
         name: 'addproject',
         data() {
             return {
-                study: {},
+                newStudy: {},
                 message: 'hahaha',
                 hasError: false
             }
@@ -48,11 +50,15 @@
         },
         methods: {
             createProject: function () {
-                this.message = 'update failed'
-                this.hasError = true
-                var msg = `Create Project - ${this.study.Client}`
-                this.$toasted.show(msg, toastrOpts)
+                server.createCaseStudy(this.newStudy).then(resp => {
+                    this.$toasted.show('New case study created successfully')
+                }).catch (err => {
+                    this.$toasted.show(err.message, toastrOpts)
+                })
             }
+        },
+        mounted() {
+            this.newStudy = fs.getNewStudy()
         }
     }
 </script>

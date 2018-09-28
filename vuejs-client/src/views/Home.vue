@@ -1,5 +1,6 @@
 <template>
   <div class='ml-5 mr-5 mb-5'>
+    <Toasted href='toasted' />
     <b-row>
       <b-button v-b-toggle.collapse1 class='ml-3 mt-2 mb-2'>Search</b-button>
     </b-row>
@@ -49,6 +50,12 @@
   import server from '@/js/server'
   import Search from '@/components/Search.vue'
 
+  let toastrOpts = {
+    duration: 3000,
+    fullWidth: true,
+    position: 'top-center'
+  }
+
   export default {
     name: 'home',
     components: {
@@ -84,7 +91,12 @@
         alert('export study')
       },
       doDeleteStudy: function () {
-        alert('doDeleteStudy implementation')
+        alert('doDeleteStudy')
+        this.$store.dispatch('deleteStudy').then(resp => {
+          this.$toasted.show(this.$store.getters.message, toastrOpts)
+        }).catch(err => {
+          this.$toasted.show(this.$store.getters.message, toastrOpts)
+        })
       }
     }
   }
