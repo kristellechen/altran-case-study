@@ -55,11 +55,12 @@ module.exports = {
   },
 
   getCaseStudyById (id) {
-    return new Promise((resolve, reject) => {
-      CaseStudies.getCaseStudyById(id, (study) => {
-        resolve(study)
-      })
-    })
+    return CaseStudies.getCaseStudyById(id)
+    // return new Promise((resolve, reject) => {
+    //   CaseStudies.getCaseStudyById(id, (study) => {
+    //     resolve(study)
+    //   })
+    // })
   },
 
   addCaseStudy (study) {
@@ -71,11 +72,12 @@ module.exports = {
   },
 
   updateCaseStudy (id, study) {
-    return new Promise((resolve, reject) => {
-      CaseStudies.updateCaseStudies(id, study, (updated) => {
-        resolve(updated)
-      })
-    })
+    return CaseStudies.updateCaseStudy(id, study)
+    // return new Promise((resolve, reject) => {
+    //   CaseStudies.updateCaseStudies(id, study, (updated) => {
+    //     resolve(updated)
+    //   })
+    // })
   },
 
   deleteCaseStudy (id) {

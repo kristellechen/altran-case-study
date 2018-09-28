@@ -109,7 +109,8 @@ module.exports.loadCaseStudies = (callback) => {
     keywords: 'HL7, Class II, EMR',
     summary: 'Leading diagnostic medical device company needed a solution to enable existing devices to send HL7 data to EMRs.',
     team: 'Matt Eisedrath, Peter Rudolph',
-    images: 0 }, (err) => {
+    images: 0
+  }, (err) => {
     if (err) console.log(err)
   })
   CaseStudies.create({
@@ -133,7 +134,8 @@ module.exports.loadCaseStudies = (callback) => {
     keywords: 'HL7, Class II, HIS, EMR',
     summary: 'Manufacturer of hospital-based diabetes blood glucose monitors and glucose meters needed update to hospital-based meters and new data management system. Foliage developed Class II data management system designed to receive data from a point-of-care device',
     team: 'Greg Walsh, John Carey',
-    images: 0 }, (err) => {
+    images: 0
+  }, (err) => {
     if (err) console.log(err)
   })
   CaseStudies.create({
@@ -157,7 +159,8 @@ module.exports.loadCaseStudies = (callback) => {
     keywords: 'Migration, code, platform, upgrade, Windows XP, Windows 7',
     summary: 'Windows XP migration to Windows 8.1, creation of Windows 8.1 Embedded Image, Verification testing of the code',
     team: 'Dave Widland, Kevin Petriel',
-    images: 0 }, (err) => {
+    images: 0
+  }, (err) => {
     if (err) console.log(err)
   })
   CaseStudies.create({
@@ -181,7 +184,8 @@ module.exports.loadCaseStudies = (callback) => {
     keywords: 'Data analytics, Semiconductor, ATE, automated test equipment, chip design',
     summary: 'A leading semiconductor company is trying to prove that advanced analytics can be used during chip design and development to detect design errors and optimize chip operations to vastly shorten the design cycle.',
     team: 'Aamir Chaudhry and Scott Evans\nGerman Analytics Team – Rich Sanford',
-    images: 0 }, (err) => {
+    images: 0
+  }, (err) => {
     if (err) console.log(err)
   })
   CaseStudies.create({
@@ -205,7 +209,8 @@ module.exports.loadCaseStudies = (callback) => {
     keywords: 'iOS, ADA, UI, Software',
     summary: 'As a development partner Foliage helped to develop an important mobile data management system for diabetics managing this chronic disease.',
     team: 'John Carey, Greg Walsh',
-    images: 0 }, (err) => {
+    images: 0
+  }, (err) => {
     if (err) console.log(err)
   })
   CaseStudies.create({
@@ -229,7 +234,8 @@ module.exports.loadCaseStudies = (callback) => {
     keywords: '62304, remediation, FDA process gap assessment',
     summary: 'Due to changes in the regulatory environment, several commercial dermatological laser systems came to be regarded as medical devices.  Manufacturer needed to reverse engineer the devices to achieve IEC 62304 compliance.',
     team: 'Mark Hersey',
-    images: 0 }, (err) => {
+    images: 0
+  }, (err) => {
     if (err) console.log(err)
   })
   CaseStudies.create({
@@ -253,7 +259,8 @@ module.exports.loadCaseStudies = (callback) => {
     keywords: 'AMAT, Cost Reduction, Etch Tool, AC Box',
     summary: 'Global company developing high precision manufacturing equipment for the semiconductor industry must meet corporate goal to reduce product costs by 20%. Chamber cooling manifold identified as individual subcomponent for significant cost reduction.',
     team: 'Myron Pugh, Lee Plovnick, Chuck Shafer',
-    images: 0 }, (err) => {
+    images: 0
+  }, (err) => {
     if (err) console.log(err)
   })
 }
@@ -269,13 +276,23 @@ module.exports.getCaseStudies = (callback, limit) => {
 }
 
 // GET case studies by id
-module.exports.getCaseStudyById = (id, callback) => {
-  CaseStudies.findById(id).exec().then(callback)
+module.exports.getCaseStudyById = (id) => {
+  return new Promise((resolve, reject) => {
+    CaseStudies.findById(id).exec((err, study) => {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(study)
+      }
+    })
+  })
 }
 
 // UPDATE case studies
-module.exports.updateCaseStudies = (id, study, callback) => {
-  var query = { _id: id }
+module.exports.updateCaseStudy = (id, study) => {
+  var query = {
+    _id: id
+  }
   var update = {
     caseId: study.caseId,
     client: study.client,
@@ -297,12 +314,35 @@ module.exports.updateCaseStudies = (id, study, callback) => {
     team: study.team,
     images: study.images
   }
-  options = { new: true }
-  CaseStudies.findOneAndUpdate(query, update, options).exec().then(callback)
+  let options = {
+    new: true
+  }
+
+  return new Promise((resolve, reject) => {
+    CaseStudies.findByIdAndUpdate(id, update).exec((err, study) => {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(study)
+      }
+    })
+  })
+
+  // return new Promise((resolve, reject) => {
+  //     CaseStudies.findOneAndUpdate(query, update, options).exec((err, study) => {
+  //       if (err) {
+  //         reject(err)
+  //       } else {
+  //         resolve(study)
+  //       }
+  //     })
+  //   }
 }
 
 // DELETE case studies
 module.exports.removeCaseStudies = (id, callback) => {
-  var query = { _id: id }
+  var query = {
+    _id: id
+  }
   CaseStudies.findOneAndRemove(query).exec().then(callback)
 }
