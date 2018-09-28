@@ -14,13 +14,19 @@
     </b-nav-item>
     <b-nav-item href="#">Logout</b-nav-item>
     <b-nav-item href="#">Search</b-nav-item>
+    <b-nav-item class='ml-auto' href="#">{{message}}</b-nav-item>
     <b-nav-item class='ml-auto'><img src='@/assets/logo.png' width=50dp /></b-nav-item>
   </b-navbar>
 </template>
 
 <script>
   export default {
-    name: 'Header'
+    name: 'Header',
+    computed: {
+        message() {
+          return this.$store.state.message
+      }
+    }
   }
 </script>
 

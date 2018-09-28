@@ -16,7 +16,7 @@
                             <div class='text-success'>{{message}}</div>
                         </div>
                         <div>
-                            <b-button class='btn-success' @click.prevent='updateProject'>Submit</b-button>
+                            <b-button class='btn-success' @click.prevent='updateCaseStudy'>Submit</b-button>
                         </div>
                     </div>
                 </div>
@@ -27,6 +27,7 @@
 
 <script>
     import Study from '@/components/Study.vue'
+    import server from '@/js/server'
 
     let toastrOpts = {
         duration: 3000,
@@ -35,7 +36,7 @@
     }
 
     export default {
-        name: 'updateproject',
+        name: 'updateCaseStudy',
         data() {
             return {
                 message: 'hahaha',
@@ -47,10 +48,21 @@
             Study
         },
         methods: {
-            updateProject: function () {
-                this.message = 'update failed'
-                var msg = `update Project - ${this.study.keywords}`
-                this.$toasted.show(msg, toastrOpts)
+            updateCaseStudy: function () {
+                this.$store.dispatch('updateStudy', this.study).then(resp => {
+                    this.$toasted.show('Case study updated successfully', toastrOpts)
+                }).catch (err => {
+                    this.$toasted.show(err.message, toastrOpts)                    
+                })
+                // server.updateCaseStudy(this.study).then(resp => {
+                //     this.hasError = false
+                //     this.message = JSON.stringify(resp)
+                //     this.$toasted.show('Case study updated successfully', toastrOpts)
+                // }).catch (err => {
+                //     this.hasError = true
+                //     this.message = err.message
+                //     this.$toasted.show(err.message, toastrOpts)
+                // })
             }
         }
     }

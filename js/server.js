@@ -28,7 +28,7 @@ module.exports = {
   },
 
   // Get Engagement Table
-  getEngagementList() {
+  getEngagementList () {
     return new Promise((resolve, reject) => {
       EngagementTypes.getEngagementTypes((engagements) => {
         resolve(engagements)
@@ -46,7 +46,7 @@ module.exports = {
   },
 
   // Get case studies
-  getCaseStudyList() {
+  getCaseStudyList () {
     return new Promise((resolve, reject) => {
       CaseStudies.getCaseStudies((studies) => {
         resolve(studies)
@@ -54,7 +54,7 @@ module.exports = {
     })
   },
 
-  getCaseStudyById(id) {
+  getCaseStudyById (id) {
     return new Promise((resolve, reject) => {
       CaseStudies.getCaseStudyById(id, (study) => {
         resolve(study)
@@ -62,7 +62,7 @@ module.exports = {
     })
   },
 
-  addCaseStudy(study) {
+  addCaseStudy (study) {
     return new Promise((resolve, reject) => {
       CaseStudies.addCaseStudy(study, (added) => {
         resolve(added)
@@ -70,7 +70,7 @@ module.exports = {
     })
   },
 
-  updateCaseStudy(id, study) {
+  updateCaseStudy (id, study) {
     return new Promise((resolve, reject) => {
       CaseStudies.updateCaseStudies(id, study, (updated) => {
         resolve(updated)
@@ -78,7 +78,7 @@ module.exports = {
     })
   },
 
-  deleteCaseStudy(id) {
+  deleteCaseStudy (id) {
     return new Promise((resolve, reject) => {
       CaseStudies.removeCaseStudies(id, (deleted) => {
         resolve(deleted)

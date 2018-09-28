@@ -10,10 +10,10 @@ export default new Vuex.Store({
     engagementTypes: [],
     keywords: [],
     studies: [],
-    isBusy: false
+    isBusy: false,
+    message: ''
   },
-  mutations: {
-  },
+  mutations: {},
   actions: {
     // Get the services, engagement-type and keywords from the server once.
     // We assume that these changes very infrequently
@@ -49,7 +49,22 @@ export default new Vuex.Store({
         context.state.studies = resp.data
       }).catch(err => {
         context.state.message = `Getting studies failed. ${err.message}`
-        throw (err)
+        throw (new Error(`Getting studies failed. ${err.message}`))
+      })
+    },
+    updateStudy (context, study) {
+      context.state.message = 'Begin Invoke updateStudy'
+      server.updateCaseStudy(study).then(resp => {
+        // the update was successful so we will replace data in the studies list.
+        context.state.studies.forEach((item, idx) => {
+          if (item._id === study._id) {
+            context.state.message = 'Invoke updateStudy successful'
+            context.state.studies[idx] = resp.data
+          }
+        })
+      }).catch(err => {
+        context.state.message = `Updating study failed.  ${err.message}`
+        throw (new Error(context.state.message))
       })
     }
   }

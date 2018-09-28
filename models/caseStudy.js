@@ -88,7 +88,7 @@ const CaseStudies = module.exports = mongoose.model('CaseStudies', caseSchema)
 
 // load initial data
 module.exports.loadCaseStudies = (callback) => {
-  CaseStudies.create( { 
+  CaseStudies.create({
     caseId: 1,
     client: 'Abaxis',
     projectName: 'HL7 Interface Development',
@@ -112,7 +112,7 @@ module.exports.loadCaseStudies = (callback) => {
     images: 0 }, (err) => {
     if (err) console.log(err)
   })
-  CaseStudies.create( { 
+  CaseStudies.create({
     caseId: 2,
     client: 'Abbott Diabetes',
     projectName: 'Next Generation Hospital Glucose Meter and Data Management System',
@@ -136,7 +136,7 @@ module.exports.loadCaseStudies = (callback) => {
     images: 0 }, (err) => {
     if (err) console.log(err)
   })
-  CaseStudies.create( { 
+  CaseStudies.create({
     caseId: 3,
     client: 'Abbott Molecular',
     projectName: 'Platform Upgrade & Migration',
@@ -160,7 +160,7 @@ module.exports.loadCaseStudies = (callback) => {
     images: 0 }, (err) => {
     if (err) console.log(err)
   })
-  CaseStudies.create( { 
+  CaseStudies.create({
     caseId: 4,
     client: 'Advantest',
     projectName: 'Advanced Analytics for Error Detection During Chip Design',
@@ -184,7 +184,7 @@ module.exports.loadCaseStudies = (callback) => {
     images: 0 }, (err) => {
     if (err) console.log(err)
   })
-  CaseStudies.create( { 
+  CaseStudies.create({
     caseId: 5,
     client: 'AgaMatrix',
     projectName: 'Mobile Application for Diabetes Data Management',
@@ -208,7 +208,7 @@ module.exports.loadCaseStudies = (callback) => {
     images: 0 }, (err) => {
     if (err) console.log(err)
   })
-  CaseStudies.create( { 
+  CaseStudies.create({
     caseId: 6,
     client: 'Amgen',
     projectName: 'Product Design History File and Requirements Remediation',
@@ -232,7 +232,7 @@ module.exports.loadCaseStudies = (callback) => {
     images: 0 }, (err) => {
     if (err) console.log(err)
   })
-  CaseStudies.create( { 
+  CaseStudies.create({
     caseId: 7,
     client: 'Applied Materials',
     projectName: 'Cost Reduction of Etch Tool',
@@ -275,7 +275,7 @@ module.exports.getCaseStudyById = (id, callback) => {
 
 // UPDATE case studies
 module.exports.updateCaseStudies = (id, study, callback) => {
-  var query = {_id: id }
+  var query = { _id: id }
   var update = {
     caseId: study.caseId,
     client: study.client,
@@ -297,7 +297,7 @@ module.exports.updateCaseStudies = (id, study, callback) => {
     team: study.team,
     images: study.images
   }
-  options = {new:true}
+  options = { new: true }
   CaseStudies.findOneAndUpdate(query, update, options).exec().then(callback)
 }
 

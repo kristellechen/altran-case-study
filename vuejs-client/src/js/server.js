@@ -18,5 +18,12 @@ export default {
   // Get the Keyword Table
   getKeywordList: function () {
     return axios.get(`${baseURL}/keyword-table`)
+  },
+
+  // Update a study.
+  // localhost:3000/studies/1000
+  updateCaseStudy: function (study) {
+    var url = `${baseURL}/studies/${study._id}`
+    return axios.put(url, study)
   }
 }
