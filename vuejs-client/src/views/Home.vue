@@ -2,7 +2,7 @@
   <div class='ml-5 mr-5 mb-5'>
     <Toasted href='toasted' />
     <b-row>
-      <b-button v-b-toggle.collapse1 class='ml-3 mt-2 mb-2'>Search</b-button>
+      <button type="button" v-b-toggle.collapse1 class="btn btn-outline-primary ml-3 mt-2 mb-2">Search</button>
     </b-row>
     <b-collapse id='collapse1' class='mt-2'>
       <b-card>
@@ -28,10 +28,10 @@
         <td>{{study.discipline}}</td>
         <td>
           <div class='btn-group' role='group' aria-label='Basic example'>
-            <button type='button' class='btn btn-secondary' data-toggle='tooltip' data-placement='top' title='Edit'
+            <button type='button' class='btn btn-outline-secondary' data-toggle='tooltip' data-placement='top' title='Edit'
               @click.stop='editStudy(study)'><i class='fas fa-edit'></i></button>
-            <button type='button' class='btn btn-secondary' @click.stop='deleteStudy(study)'><i class='fas fa-trash-alt'></i></button>
-            <button type='button' class='btn btn-secondary' data-toggle='tooltip' data-placement='top' title='Export'
+            <button type='button' class='btn btn-outline-danger' @click.stop='deleteStudy(study)'><i class='fas fa-trash-alt'></i></button>
+            <button type='button' class='btn btn-outline-primary' data-toggle='tooltip' data-placement='top' title='Export'
               @click.stop='exportStudy(study)'><i class='fas fa-file-export'></i></button>
           </div>
         </td>
@@ -40,7 +40,7 @@
 
     <!-- Delete Confirmation Modal -->
     <b-modal ref='deleteConfirmation' title='Delete confirmation' @ok='doDeleteStudy'>
-      <p>Hello</p>
+      <p>This case study will be deleted permanently.</p>
     </b-modal>
 
   </div>

@@ -23,7 +23,7 @@
       <div class='col-4'><input type='text' class='form-control' v-model='searchPayload.discipline'></div>
     </div>
     <div class='float-right'>
-      <b-button @click.prevent='resetForm' class='btn-danger mt-2'>Reset</b-button>
+      <b-button @click.prevent='resetForm' class='btn-outline-danger mt-2'>Reset</b-button>
     </div>
   </div>
 </template>
