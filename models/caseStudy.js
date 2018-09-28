@@ -304,5 +304,5 @@ module.exports.updateCaseStudies = (id, study, callback) => {
 // DELETE case studies
 module.exports.removeCaseStudies = (id, callback) => {
   var query = { _id: id }
-  CaseStudies.deleteOne(query, callback)
+  CaseStudies.findOneAndRemove(query).exec().then(callback)
 }
