@@ -266,8 +266,8 @@ module.exports.loadCaseStudies = (callback) => {
 }
 
 // ADD case studies
-module.exports.addCaseStudy = (study, callback) => {
-  CaseStudies.create(study).then(callback)
+module.exports.addCaseStudy = (study) => {
+  return CaseStudies.create(study)
 }
 
 // GET case studies
@@ -277,15 +277,16 @@ module.exports.getCaseStudies = (callback, limit) => {
 
 // GET case studies by id
 module.exports.getCaseStudyById = (id) => {
-  return new Promise((resolve, reject) => {
-    CaseStudies.findById(id).exec((err, study) => {
-      if (err) {
-        reject(err)
-      } else {
-        resolve(study)
-      }
-    })
-  })
+  return CaseStudies.findById(id)
+  // return new Promise((resolve, reject) => {
+  //   CaseStudies.findById(id).exec((err, study) => {
+  //     if (err) {
+  //       reject(err)
+  //     } else {
+  //       resolve(study)
+  //     }
+  //   })
+  // })
 }
 
 // UPDATE case studies
@@ -318,15 +319,17 @@ module.exports.updateCaseStudy = (id, study) => {
     new: true
   }
 
-  return new Promise((resolve, reject) => {
-    CaseStudies.findByIdAndUpdate(id, update).exec((err, study) => {
-      if (err) {
-        reject(err)
-      } else {
-        resolve(study)
-      }
-    })
-  })
+  return CaseStudies.findByIdAndUpdate(id, update).exec()
+
+  // return new Promise((resolve, reject) => {
+  //   CaseStudies.findByIdAndUpdate(id, update).exec((err, study) => {
+  //     if (err) {
+  //       reject(err)
+  //     } else {
+  //       resolve(study)
+  //     }
+  //   })
+  // })
 
   // return new Promise((resolve, reject) => {
   //     CaseStudies.findOneAndUpdate(query, update, options).exec((err, study) => {
@@ -339,10 +342,10 @@ module.exports.updateCaseStudy = (id, study) => {
   //   }
 }
 
-// DELETE case studies
-module.exports.removeCaseStudies = (id, callback) => {
+// DELETE case study
+module.exports.removeCaseStudy = (id, callback) => {
   var query = {
     _id: id
   }
-  CaseStudies.findOneAndRemove(query).exec().then(callback)
+  return CaseStudies.findByIdAndRemove(query).exec()
 }

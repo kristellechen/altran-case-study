@@ -64,11 +64,12 @@ module.exports = {
   },
 
   addCaseStudy (study) {
-    return new Promise((resolve, reject) => {
-      CaseStudies.addCaseStudy(study, (added) => {
-        resolve(added)
-      })
-    })
+    return CaseStudies.addCaseStudy(study)
+    // return new Promise((resolve, reject) => {
+    //   CaseStudies.addCaseStudy(study, (added) => {
+    //     resolve(added)
+    //   })
+    // })
   },
 
   updateCaseStudy (id, study) {
@@ -81,10 +82,11 @@ module.exports = {
   },
 
   deleteCaseStudy (id) {
-    return new Promise((resolve, reject) => {
-      CaseStudies.removeCaseStudies(id, (deleted) => {
-        resolve(deleted)
-      })
-    })
+    return CaseStudies.removeCaseStudy(id)
+    // return new Promise((resolve, reject) => {
+    //   CaseStudies.removeCaseStudy(id, (deleted) => {
+    //     resolve(deleted)
+    //   })
+    // })
   }
 }
