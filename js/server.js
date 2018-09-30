@@ -21,7 +21,7 @@ let SlideMaker = require('../js/slidesMaker')
 module.exports = {
 
   // Get Services Table
-  getServicesList () {
+  getServicesList() {
     return new Promise((resolve, reject) => {
       Services.getServices((serviceList) => {
         resolve(serviceList)
@@ -30,7 +30,7 @@ module.exports = {
   },
 
   // Get Engagement Table
-  getEngagementList () {
+  getEngagementList() {
     return new Promise((resolve, reject) => {
       EngagementTypes.getEngagementTypes((engagements) => {
         resolve(engagements)
@@ -39,7 +39,7 @@ module.exports = {
   },
 
   // Get the Keyword Table
-  getKeywordList () {
+  getKeywordList() {
     return new Promise((resolve, reject) => {
       Keywords.getKeywords((keys) => {
         resolve(keys)
@@ -48,7 +48,7 @@ module.exports = {
   },
 
   // Get case studies
-  getCaseStudyList () {
+  getCaseStudyList() {
     return new Promise((resolve, reject) => {
       CaseStudies.getCaseStudies((studies) => {
         resolve(studies)
@@ -56,50 +56,57 @@ module.exports = {
     })
   },
 
-  getCaseStudyById (id) {
+  getCaseStudyById(id) {
     return CaseStudies.getCaseStudyById(id)
-    // return new Promise((resolve, reject) => {
-    //   CaseStudies.getCaseStudyById(id, (study) => {
-    //     resolve(study)
-    //   })
-    // })
+  // return new Promise((resolve, reject) => {
+  //   CaseStudies.getCaseStudyById(id, (study) => {
+  //     resolve(study)
+  //   })
+  // })
   },
 
-  addCaseStudy (study) {
+  addCaseStudy(study) {
     return CaseStudies.addCaseStudy(study)
-    // return new Promise((resolve, reject) => {
-    //   CaseStudies.addCaseStudy(study, (added) => {
-    //     resolve(added)
-    //   })
-    // })
+  // return new Promise((resolve, reject) => {
+  //   CaseStudies.addCaseStudy(study, (added) => {
+  //     resolve(added)
+  //   })
+  // })
   },
 
-  updateCaseStudy (id, study) {
+  updateCaseStudy(id, study) {
     return CaseStudies.updateCaseStudy(id, study)
-    // return new Promise((resolve, reject) => {
-    //   CaseStudies.updateCaseStudies(id, study, (updated) => {
-    //     resolve(updated)
-    //   })
-    // })
+  // return new Promise((resolve, reject) => {
+  //   CaseStudies.updateCaseStudies(id, study, (updated) => {
+  //     resolve(updated)
+  //   })
+  // })
   },
 
-  deleteCaseStudy (id) {
+  deleteCaseStudy(id) {
     return CaseStudies.removeCaseStudy(id)
-    // return new Promise((resolve, reject) => {
-    //   CaseStudies.removeCaseStudies(id, (deleted) => {
-    //     resolve(deleted)
-    //   })
-    // })
+  // return new Promise((resolve, reject) => {
+  //   CaseStudies.removeCaseStudies(id, (deleted) => {
+  //     resolve(deleted)
+  //   })
+  // })
   },
 
-  createHITSlide (id) {
+  createHITSlide(id) {
     return new Promise((resolve, reject) => {
       var pptx = new pptxgenjs()
       SlideMaker.defineMasterSlideTemplate(pptx)
       pptx.setLayout('LAYOUT_WIDE')
-      SlideMaker.createSlide(pptx, 'HIT_TITLE_SLIDE', (presentation) => {
-        console.log('done')
-        resolve(presentation)
+      var slidetype = null
+      CaseStudies.getCaseStudyById(id).then(study => {
+        if (study.sector == 'MedTech') {
+          slidetype = 'MedTech_TITLE_SLIDE'
+        }else {
+          slidetype = 'HIT_TITLE_SLIDE'
+        }
+        SlideMaker.createSlide(pptx, study, slidetype, (presentation) => {
+          resolve(presentation)
+        })
       })
     })
   }

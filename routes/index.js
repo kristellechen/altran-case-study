@@ -85,12 +85,13 @@ router.get('/keyword-table', function (req, res, next) {
 
 // Create a presentation.
 // localhost:3000/presentation
-router.post('/presentation/:id', function (req, res) {
+router.get('/presentation/:id', function (req, res) {
   server.createHITSlide(req.params.id).then(resp => {
-    res.json(resp)
-  }).catch(err => {
-    res.json(err)
-  })
+    filename = 'presentation.pptx'
+    res.writeHead(200, {'Content-Type': 'application/force-download','Content-disposition': 'attachment; filename=' + filename })
+    res.end(new Buffer(resp, 'binary'))
+  // res.json(resp)
+  }).catch(err => res.status(500).json(err))
 })
 
 module.exports = router
