@@ -66,6 +66,10 @@ const caseSchema = new mongoose.Schema({
     type: String,
     required: false
   },
+  situation: {
+    type: String,
+    required: false
+  },
   keywords: {
     type: String,
     required: false
@@ -278,15 +282,15 @@ module.exports.getCaseStudies = (callback, limit) => {
 // GET case studies by id
 module.exports.getCaseStudyById = (id) => {
   return CaseStudies.findById(id)
-  // return new Promise((resolve, reject) => {
-  //   CaseStudies.findById(id).exec((err, study) => {
-  //     if (err) {
-  //       reject(err)
-  //     } else {
-  //       resolve(study)
-  //     }
-  //   })
-  // })
+// return new Promise((resolve, reject) => {
+//   CaseStudies.findById(id).exec((err, study) => {
+//     if (err) {
+//       reject(err)
+//     } else {
+//       resolve(study)
+//     }
+//   })
+// })
 }
 
 // UPDATE case studies
@@ -331,15 +335,15 @@ module.exports.updateCaseStudy = (id, study) => {
   //   })
   // })
 
-  // return new Promise((resolve, reject) => {
-  //     CaseStudies.findOneAndUpdate(query, update, options).exec((err, study) => {
-  //       if (err) {
-  //         reject(err)
-  //       } else {
-  //         resolve(study)
-  //       }
-  //     })
-  //   }
+// return new Promise((resolve, reject) => {
+//     CaseStudies.findOneAndUpdate(query, update, options).exec((err, study) => {
+//       if (err) {
+//         reject(err)
+//       } else {
+//         resolve(study)
+//       }
+//     })
+//   }
 }
 
 // DELETE case study
