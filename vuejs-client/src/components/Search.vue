@@ -44,14 +44,15 @@
           industry: '',
           discipline: '',
           selectedKeywords: [],
-          selectedEngagementTypes: []
+          selectedEngagementTypes: [],
         }
       }
     },
     watch: {
       searchPayload: {
-        function (json) {
-          this.onSearch(json)
+        // note the use of handler and deep
+        handler (newVal, oldVal) {
+          this.onSearch(newVal)
         },
         deep: true      // set deep to look for nested changes
       }

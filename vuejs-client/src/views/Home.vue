@@ -1,13 +1,13 @@
 <template>
   <div class='ml-5 mr-5 mb-5'>
     <Toasted href='toasted' />
+    {{searchPayload}}
     <b-row>
       <button type="button" v-b-toggle.collapse1 class="btn btn-outline-primary ml-3 mt-2 mb-2">Search</button>
-      <b-button v-b-toggle.collapse1 class='ml-3 mt-2 mb-2'>Search</b-button>
     </b-row>
     <b-collapse id='collapse1' class='mt-2'>
       <b-card>
-        <Search v-on:onSearch='doSearch' />
+        <Search @onSearch='doSearch' />
       </b-card>
     </b-collapse>
     <table class='table table-striped'>
@@ -65,17 +65,22 @@
     data() {
       return {
         selectedStudyId: null,
-        powerPointURL: ''
+        searchPayload: null
       }
     },
     computed: {
       studies() {
-        return this.$store.state.studies
+        if (this.searchPayload) {
+          var ptr = this
+          return this.$store.state.studies.filter(this.filterFunc)
+        } else {
+          return this.$store.state.studies
+        }
       }
     },
     methods: {
       doSearch: function (payload) {
-        alert(JSON.stringify(payload))
+        this.searchPayload = payload
       },
       editStudy: function (study) {
         const tmpStudy = JSON.parse(JSON.stringify(study))
@@ -110,8 +115,23 @@
         }).catch(err => {
           this.$toasted.show(this.$store.getters.message, toastrOpts)
         })
+      },
+      filterFunc: function (item) {
+        return item.client.toLowerCase().includes(this.searchPayload.clientname.toLowerCase()) &&
+          item.projectName.toLowerCase().includes(this.searchPayload.projectname.toLowerCase()) &&
+          item.industry.toLowerCase().includes(this.searchPayload.industry.toLowerCase()) &&
+          item.discipline.toLowerCase().includes(this.searchPayload.discipline.toLowerCase()) &&
+          this.arrayContainsAnotherArray(item.keywords, this.searchPayload.selectedKeywords) &&
+          this.arrayContainsAnotherArray(item.engagementType, this.searchPayload.selectedEngagementTypes)
+      },
+      arrayContainsAnotherArray (arraySource, arrayFilter) {
+        var isExists = true
+        arrayFilter.forEach(element => {
+          isExists &= arraySource.includes(element)
+        });
+
+        return isExists
       }
     }
   }
-  
 </script>
