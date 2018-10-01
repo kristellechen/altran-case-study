@@ -3,6 +3,7 @@
     <Toasted href='toasted' />
     <b-row>
       <button type="button" v-b-toggle.collapse1 class="btn btn-outline-primary ml-3 mt-2 mb-2">Search</button>
+      <b-button v-b-toggle.collapse1 class='ml-3 mt-2 mb-2'>Search</b-button>
     </b-row>
     <b-collapse id='collapse1' class='mt-2'>
       <b-card>
@@ -64,6 +65,7 @@
     data() {
       return {
         selectedStudyId: null,
+        powerPointURL: ''
       }
     },
     computed: {
@@ -90,6 +92,16 @@
       },
       exportStudy: function (study) {
         alert('export study')
+        server.getPresentation(study._id).then(resp => {
+          const url = window.URL.createObjectURL(new Blob([resp.data]));
+          const link = document.createElement('a');
+          link.href = url;
+          link.setAttribute('download', `${study.client}_generated.ppt`); //or any other extension
+          document.body.appendChild(link);
+          link.click();
+        }).catch(err => {
+          alert(err.message)
+        })
       },
       doDeleteStudy: function () {
         alert(`doDeleteStudy - ${this.selectedStudyId}`)
@@ -101,4 +113,5 @@
       }
     }
   }
+  
 </script>

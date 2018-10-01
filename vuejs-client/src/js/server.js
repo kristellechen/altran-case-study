@@ -39,5 +39,19 @@ export default {
   deleteCaseStudy: function (studyId) {
     var url = `${baseURL}/studies/${studyId}`
     return axios.delete(url)
+  },
+
+  // Request for powerpoint
+  getPresentation: function (studyId) {
+    var url = `${baseURL}/presentation/${studyId}`
+    // axios download with response type "stream"
+    return axios({
+      method: 'get',
+      url: url,
+      responseType: 'blob'
+    }).then(resp => {
+      console.log(resp)
+      return resp
+    })
   }
 }
