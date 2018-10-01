@@ -18,7 +18,7 @@ module.exports = {
       keywordLookup: 'keyword',
       challenges: 'challenges',
       solution: 'solution',
-      provenResults: 'proven resules',
+      provenResults: 'proven results',
       keywords: '',
       summary: 'summary',
       team: 'team involved',

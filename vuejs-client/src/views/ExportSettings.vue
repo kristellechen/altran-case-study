@@ -1,7 +1,9 @@
 <template>
-    <div>
-        Export Settings
+<div>
+    <div class='myContainer'>
+        <h3>Export Settings</h3>
     </div>
+</div>
 </template>
 
 <script>
@@ -9,3 +11,13 @@
         name: 'exportsettings'
     }
 </script>
+
+<style scoped>
+
+.myContainer {
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 150px;
+}
+
+</style>

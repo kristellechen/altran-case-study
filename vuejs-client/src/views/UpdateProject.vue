@@ -1,7 +1,7 @@
 <template>
     <div>
         <Toasted href='toasted'/>
-        <div class='m-5'>
+        <div class='myContainer'>
             <div class='card'>
                 <div class='card-header'>Update Case Study</div>
                 <div class='card-body'>
@@ -60,5 +60,11 @@
 </script>
 
 <style scoped>
+
+.myContainer {
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 150px;
+}
 
 </style>

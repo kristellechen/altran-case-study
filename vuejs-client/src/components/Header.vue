@@ -1,19 +1,18 @@
 <template>
-  <b-navbar type="dark" variant="dark" toggleable>
+  <b-navbar type="dark" variant="dark" toggleable class='fixed-top'>
     <b-navbar-brand href="#">
-      <img src='@/assets/logo.png' width=50dp />
+      <img src='@/assets/AltranLogo.jpg' />
     </b-navbar-brand>
     <b-nav-item>
-      <router-link to='/Home'>Home</router-link>
+      <router-link to='/Home'><h5>Home</h5></router-link>
     </b-nav-item>
     <b-nav-item>
-      <router-link to='/AddProject'>Add Project</router-link>
+      <router-link to='/AddProject'><h5>Add Project</h5></router-link>
     </b-nav-item>
     <b-nav-item>
-      <router-link to='/ExportSettings'>Export Settings</router-link>
+      <router-link to='/ExportSettings'><h5>Export Settings</h5></router-link>
     </b-nav-item>
-    <b-nav-item href="#">Logout</b-nav-item>
-    <b-nav-item href="#">Search</b-nav-item>
+    <b-nav-item href="#"><h5>Logout</h5></b-nav-item>
     <b-nav-item class='ml-auto' href="#">{{message}}</b-nav-item>
     <b-nav-item class='ml-auto'><img src='@/assets/logo.png' width=50dp /></b-nav-item>
   </b-navbar>
@@ -32,4 +31,5 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
 </style>

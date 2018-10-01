@@ -1,9 +1,8 @@
 <template>
-  <div class='ml-5 mr-5 mb-5'>
+  <div class='myContainer'>
     <Toasted href='toasted' />
-    {{searchPayload}}
     <b-row>
-      <button type="button" v-b-toggle.collapse1 class="btn btn-outline-primary ml-3 mt-2 mb-2">Search</button>
+      <button type="button" v-b-toggle.collapse1 class="btn btn-outline-primary mr-3 mt-3 mb-2 ml-auto"><i class="fas fa-search"></i></button>
     </b-row>
     <b-collapse id='collapse1' class='mt-2'>
       <b-card>
@@ -135,3 +134,13 @@
     }
   }
 </script>
+
+<style scoped>
+
+.myContainer {
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 100px;
+}
+
+</style>
