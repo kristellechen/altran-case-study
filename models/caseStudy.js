@@ -78,6 +78,10 @@ const caseSchema = new mongoose.Schema({
     type: String,
     required: false
   },
+  outline: {
+    type: String,
+    required: false
+  },
   team: {
     type: String,
     required: false
@@ -111,6 +115,7 @@ const preloadedStudies = [
     "situation": "Leading diagnostic medical device manufacturer must improve and expand their connectivity strategy for lab equipment. They need a solution to enable their existing blood chemistry analyzers to communicate via HL7 with EMRs/LIMs.",
     "keywords": "HL7, Class II, EMR",
     "summary": "Leading diagnostic medical device company needed a solution to enable existing devices to send HL7 data to EMRs.",
+    "outline": "Medical Device Send HL7 data to EMRs",
     "team": "Matt Eisedrath, Peter Rudolph",
     "images": 0
   },
@@ -134,6 +139,7 @@ const preloadedStudies = [
     "situation": "A manufacturer of hospital-based diabetes blood glucose monitors and meters needed to make significant updates to their hospital-based meters and develop a new data management system. Company facing an aggressive market window and had limited experience i",
     "keywords": "HL7, Class II, HIS, EMR",
     "summary": "Manufacturer of hospital-based diabetes blood glucose monitors and glucose meters needed update to hospital-based meters and new data management system. Foliage developed Class II data management system designed to receive data from a point-of-care device",
+    "outline": "Developed Class II data management system",
     "team": "Greg Walsh, John Carey",
     "images": 0
   },
@@ -157,6 +163,7 @@ const preloadedStudies = [
     "situation": "Provider of diagnostic testing instruments is faced with obsolescence of current operating system (OS). This critical upgrade is necessary to maintain historical support levels \u000band will provide a solid foundation for the development \u000bof future instrument",
     "keywords": "Migration, code, platform, upgrade, Windows XP, Windows 7",
     "summary": "Windows XP migration to Windows 8.1, creation of Windows 8.1 Embedded Image, Verification testing of the code",
+    "outline": "Migration and Verification",
     "team": "Dave Widland, Kevin Petriel",
     "images": 0
   },
@@ -180,6 +187,7 @@ const preloadedStudies = [
     "situation": "A leading semiconductor company is trying to prove that advanced analytics can be used during chip design and development to detect design errors and optimize chip operations to vastly \nshorten the design cycle.",
     "keywords": "Data analytics, Semiconductor, ATE, automated test equipment, chip design",
     "summary": "A leading semiconductor company is trying to prove that advanced analytics can be used during chip design and development to detect design errors and optimize chip operations to vastly shorten the design cycle.",
+    "outine": "Optimize chip design cycle",
     "team": "Aamir Chaudhry and Scott Evans\nGerman Analytics Team – Rich Sanford",
     "images": 0
   },
@@ -203,6 +211,7 @@ const preloadedStudies = [
     "situation": "An early-stage glucometers and data management solutions company struggling to develop an iOS application. They are looking to differentiate in a crowded marketplace with a    single device enabling proactive disease management –    iPhone plug-in meter w",
     "keywords": "iOS, ADA. UI, software",
     "summary": "As a development partner Foliage helped to develop an important mobile data management system for diabetics managing this chronic disease.",
+    "outline": "iOS mobile application managing diabetes",
     "team": "John Carey, Greg Walsh",
     "images": 0
   },
@@ -226,6 +235,7 @@ const preloadedStudies = [
     "situation": "Due to changes in the regulatory environment, several commercial dermatological laser systems came to be regarded as medical devices. Manufacturer needs to reverse engineer the systems to achieve IEC 62304 compliance.",
     "keywords": "62304, remediation, FDA process gap assessment",
     "summary": "Due to changes in the regulatory environment, several commercial dermatological laser systems came to be regarded as medical devices.  Manufacturer needed to reverse engineer the devices to achieve IEC 62304 compliance.",
+    "outline": "IEC 62304 compliance",
     "team": "Mark Hersey",
     "images": 0
   },
@@ -250,6 +260,7 @@ const preloadedStudies = [
     "keywords": "AMAT, cost reduction, etch tool, AC box",
     "summary": "Global company developing high precision manufacturing equipment for the semiconductor industry must meet corporate goal to reduce product costs by 20%. Chamber cooling manifold identified as individual subcomponent for significant cost reduction.",
     "team": "Myron Pugh, Lee Plovnick, Chuck Shafer",
+    "outline": "Reduce product costs by 20%",
     "images": 0
   },
   {
@@ -272,6 +283,7 @@ const preloadedStudies = [
     "situation": "A patient-centric diabetes product company looking to develop  a secure cloud-based diabetes management system. Existing system was outdated, challenging for patients to use and didn’t meet latest FDA cybersecurity guidance.",
     "keywords": "Diabetes, cloud, enterprise, cybersecurity",
     "summary": "A patient-centric diabetes products company looking to develop a secure cloud-based diabetes management system. Existing system was outdated, challenging for patients to use and didn’t meet latest FDA cybersecurity guidance.",
+    "outline": "outline",
     "team": "Adam Hesse",
     "images": 0
   },
@@ -295,6 +307,7 @@ const preloadedStudies = [
     "situation": "An early stage company in the traumatic brain injury market looking to migrate a prototype single tenant web application to a scalable cloud infrastructure in less than 6 months.",
     "keywords": "Biology, cloud, migration, neurology, enterprise",
     "summary": "Migration strategy to merge multiple disparate HIS software systems to a new architecture",
+    "outline": "outline",
     "team": "Adam Hesse, John, Carey, Greg Walsh",
     "images": 0
   },
@@ -318,6 +331,7 @@ const preloadedStudies = [
     "situation": "Biotechnology division of a global R&D company must address connectivity limitations with current ID system in order to expand market share. The solution must enable two devices   to exchange necessary worklists and results.",
     "keywords": "LIM, connectivity, lab & test, workflow management",
     "summary": "Biotechnology division of a global R&D company must address connectivity limitations with current ID system in order to expand market share. The solution must enable two devices   to exchange necessary worklists and results.",
+    "outline": "outline",
     "team": "Tim Bosch, Madeline Shattow",
     "images": 0
   },
@@ -341,6 +355,7 @@ const preloadedStudies = [
     "situation": "Manufacturer of molecular diagnostic instruments under pressure from customers to simplify and secure the software update process for an existing device. The current product required manual updates (via CD) and did not allow for remote support. Need to dr",
     "keywords": "Cloud, cybersecurity, connectivity, LIS, EMR, IOT",
     "summary": "A leading molecular diagnostic company selected Foliage to develop a migration strategy and roadmap for moving their solution to the cloud.  The architecture leveraged cloud based platforms from BaaS providers in order to move software applications, remot",
+    "outline": "outline",
     "team": "Norm Haas, Dan O'Connor, Adam Hesse",
     "images": 0
   },
@@ -364,6 +379,7 @@ const preloadedStudies = [
     "situation": "A global healthcare medical device company must develop a contrast injection system for emerging markets. This next generation device requires more streamlined processes and must be easier to operate.",
     "keywords": "product costs, development, software, electrical, mechanical",
     "summary": "Developed complete contrast agent injector for the medical market including system design, mechanical system, electronic controls and software",
+    "outline": "outline",
     "team": "John Carey, Chris Miles",
     "images": 0
   },
@@ -387,6 +403,7 @@ const preloadedStudies = [
     "situation": "Analytical device manufacturer looking to provide an upgrade in performance and accuracy for existing customers in emerging markets, at less than half the cost of competing devices. Key focus is on reducing product development costs while improving perfor",
     "keywords": "SOM,   touchscreen LCD,   \nfluidics, low cost ion-exchange chromatography\n3 axis stepper driven sample loading automation",
     "summary": "Developed prototype HbA1c analyzer product including electro-mechanical and control software.",
+    "outline": "outline",
     "team": "John Carey, Dave Warburton",
     "images": 0
   },
@@ -410,6 +427,7 @@ const preloadedStudies = [
     "situation": "A start-up neuroscience company with a wireless device for health monitoring seeking new service-based business model for their innovative approach to controlling data quality in diagnosis reporting. Primary objectives for the solution included developing",
     "keywords": "data, connectivity, software, scalability",
     "summary": "A start-up neuroscience company with a wireless device for health monitoring seeking new service-based\nbusiness model for their innovative approach to controlling data quality in diagnosis reporting.\nPrimary objectives for the solution included developing",
+    "outline": "outline",
     "team": "Matt Eisedrath",
     "images": 0
   },
@@ -433,6 +451,7 @@ const preloadedStudies = [
     "situation": "Start-up company wants to develop a new portable EEG system for brain assessment in the field. They need support to take them from concept to product commercialization in a very short period of time.",
     "keywords": "Portable EEG System, data analytics, Heart Rate Variability (HRV) and Electrocardiography (ECG)",
     "summary": "Start-up company wants to develop a new portable EEG system for brain assessment in the field. They need support to take them from concept to product commercialization in a short period of time.",
+    "outline": "outline",
     "team": "John Carey, Dave Meyers",
     "images": 0
   },
@@ -456,6 +475,7 @@ const preloadedStudies = [
     "situation": "Leading global provider of measurement systems looking to increase market share in semiconductor equipment market faced customer pressures to enhance product features. Current product suffering debilitating reliability issues each time new features are ad",
     "keywords": "Dual beam SEM, architecture assessment, semiconductor, Software Reliability",
     "summary": "Leading global provider of measurement systems looking to increase market share  in semiconductor equipment market faced customer pressures to enhance product features. Current product suffering debilitating reliability issues each time new features are a",
+    "outline": "outline",
     "team": "Dan O'Connor, Scott Evans",
     "images": 0
   },
@@ -479,6 +499,7 @@ const preloadedStudies = [
     "situation": "Manufacturer of industrial cutting machines looking to develop next-generation textile cutter control system with scalable architecture to enable faster delivery of new product enhancements. Development efforts constrained by complications arising from mu",
     "keywords": "Control system, motion control, migration, product line, acquisition, architecture",
     "summary": "Manufacturer of industrial cutting machines looking to develop next generation textile cutter control system with scalable architecture to enable faster delivery of new product enhancements. Development efforts constrained by complications arising from mu",
+    "outline": "outline",
     "team": "Tom Mariano\nRick Flanders\nScott Evans",
     "images": 0
   },
@@ -502,6 +523,7 @@ const preloadedStudies = [
     "situation": "Global leader in laser precision technology developing next generation laser marker control system with architecture that can support product enhancements and new technologies. Urgent need to improve performance to sustain market position while developing",
     "keywords": "architecture strategy, VDA, migration, manufacturing, off-shore, on-shore",
     "summary": "Global leader in laser precision technology developing next generation laser marker control system with architecture that can support product enhancements and new technologies. Urgent need to improve performance to sustain market position while developing",
+    "outline": "outline",
     "team": "Tim Bowe, Karl Aeder",
     "images": 0
   },
@@ -525,6 +547,7 @@ const preloadedStudies = [
     "situation": "A material handling company focused on robotics looking to enter the e-commerce retail distribution and fulfillment arena with a solution to improve efficiency and productivity in thepick-to-order space. Company looking for assistance to leverage existing",
     "keywords": "Fleet Control Management, Robotics, Retail distribution, time to market",
     "summary": "A material handling company focused on robotics looking to enter the e-commerce retail distribution and fulfillment arena with a solution to improve efficiency and productivity in the pick-to-order space. Company looking for assistance to leverage existin",
+    "outline": "outline",
     "team": "Aamir Chaudhry",
     "images": 0
   },
@@ -548,6 +571,7 @@ const preloadedStudies = [
     "situation": "LVAD device manufacturer that is CE approved and sold in Europe wants to enter the U.S. market. Device needs Class III approval and they are up against a tight 18-month plan to commercialize the product.",
     "keywords": "Control software, test processes, next-generation device, LVAD, implantable",
     "summary": "LVAD device manufacturer that is CE approved and sold in Europe wants to enter the U.S. market. Device needs Class III approval and they are up against a tight 18-month plan to commercialize the product.",
+    "outline": "outline",
     "team": "John Carey, Matt Eisendrath, John Montrone, Alan Walsh, Peter Ferguson",
     "images": 0
   },
@@ -571,6 +595,7 @@ const preloadedStudies = [
     "situation": "Due to a shift in the marketplace driven by e-commerce and omni-channel demand, the manufacturer of automated warehouse solutions must deliver a next-generation system with real-time adaptive workflows to optimize fulfillment operations. A highly configur",
     "keywords": "Assessment, Architecture Definition, Warehouse Automation, IoT",
     "summary": "Due to a shift in the marketplace driven by e-commerce and omni-channel demand, the manufacturer of automated warehouse solutions must deliver a next-generation system with real-time adaptive workflows to optimize fulfillment operations. A highly configur",
+    "outline": "outline",
     "team": "Amit Shah, Scott Evans",
     "images": 0
   },
@@ -594,6 +619,7 @@ const preloadedStudies = [
     "situation": "Manufacturer of beverage brewing systems facing intense pressure to add features and functionality that leverage the IoT. Need help identifying the most compelling features and functionality to appeal to new and existing customers.",
     "keywords": "IoT, Wireless, EE, Systems, Software, Embedded,",
     "summary": "Manufacturer of beverage brewing systems facing intense pressure to add features and functionality that leverage the IoT. Need help identifying the most compelling features and functionality to appeal to new and existing customers",
+    "outline": "outline",
     "team": "Tom Mariano",
     "images": 0
   },
@@ -617,6 +643,7 @@ const preloadedStudies = [
     "situation": "A global provider of process measurement and control, yield management and data analysis solutions for semiconductor manufacturing faced with making major improvements to an existing product. Customer requests driving enhancements to the capabilities and",
     "keywords": "Big Data",
     "summary": "A global provider of process measurement and control, yield management and data analysis solutions for semiconductor manufacturing faced with making major improvements to an existing product. Customer requests driving enhancements to the capabilities and",
+    "outline": "outline",
     "team": "Norm Haas",
     "images": 0
   },
@@ -640,6 +667,7 @@ const preloadedStudies = [
     "situation": "A well-established international shipping port currently utilizing cargo scanners from several different manufacturers must reduce costs. By centralizing operations and utilizing a single effective image analysis application suite with existing scanners,",
     "keywords": "x-ray, scanning system, security, mobile",
     "summary": "Developed control software and hardware for a high-energy X-ray scanning system for large cargo containers. The full system was designed to be a fully mobile system",
+    "outline": "outline",
     "team": "Jay Gray, David Martin",
     "images": 0
   },
@@ -663,6 +691,7 @@ const preloadedStudies = [
     "situation": "Fortune 100 healthcare company needs to develop an advanced population health solution to address the market’s value-based reimbursement structure. Current population health market is highly fragmented, without a dominant product suite.",
     "keywords": "Big Data, analytics, platform strategy",
     "summary": "Fortune 100 healthcare company needs to develop an advanced population health solution to address the market’s value-based reimbursement structure. Existing population health market        is highly fragmented, without a dominate product suite.",
+    "outline": "outline",
     "team": "Tim Bosch, Matt Eisendrath",
     "images": 0
   },
@@ -686,6 +715,7 @@ const preloadedStudies = [
     "situation": "Provider of pharmacy services needs to significantly expand patient data management and analytics capabilities. The current solution and technology are insufficient to meet increasing  data volumes, data sources, number of    customers, and analytics need",
     "keywords": "Data Management, Roadmap, Security, Architecture, Platform",
     "summary": "Provider of pharmacy services needs to significantly expand patient data management and analytic capabilities. The current solution and technology are insufficient to meet increasing  data volumes, data sources, number of customer and      analytic needs.",
+    "outline": "outline",
     "team": "Tim Bosch, Matt Eisendrath",
     "images": 0
   },
@@ -709,6 +739,7 @@ const preloadedStudies = [
     "situation": "Surgical imaging division of large, global medical device company needed to respond quickly to address product reliability issues voiced by customers. To isolate and stabilize these issues, a comprehensive product assessment was implemented.",
     "keywords": "software, design, architecture",
     "summary": "Assessed existing control software for an x-ray-based intrasurgical imaging system. Subsequently were engaged to provide a recommendation for a new software control architecture which would improve overall system reliability.",
+    "outline": "outline",
     "team": "Tim Bowe, Dan O'Connor",
     "images": 0
   },
@@ -732,6 +763,7 @@ const preloadedStudies = [
     "situation": "Leading pharmaceutical company looking to automate the acquisition and analysis of clinical trial data. They need an approach that will help them streamline work processes to increase workflow efficiency and improve data quality and integrity.",
     "keywords": "product platform, architecture strategy, lab & test, drug development, metrics",
     "summary": "Leading pharmaceutical company looking to automate the acquisition and analysis of clinical trial data. They need an approach that will help them streamline work processes to increase workflow efficiency and improve data quality and integrity.",
+    "outline": "outline",
     "team": "Tim Bosch",
     "images": 0
   },
@@ -755,6 +787,7 @@ const preloadedStudies = [
     "situation": "Beverage dispensing facilities must rapidly modify existing production process without downtime. Developing a universal liquid dispensing system to accurately dispense a range of fluid viscosities and inclusions at high speeds in a corrosive environment i",
     "keywords": "hardware, beverage filler valve, systems, manufacturing, consumer goods, food and beverage",
     "summary": "Beverage dispensing facilities must rapidly modify existing production process without down time. Developing a universal liquid dispensing system to accurately dispense a range of fluid viscosities and inclusions at high speeds in a corrosive environment",
+    "outline": "outline",
     "team": "David Martin, Dave Warburton, Tom Evans",
     "images": 0
   },
@@ -778,6 +811,7 @@ const preloadedStudies = [
     "situation": "A global medical device manufacturer looking to differentiate by introducing a mobile imaging device for use outside of traditional healthcare facilities. Primary objective was to rapidly build a cloud-based portal allowing a mobile device \nto send images",
     "keywords": "Cloud, imaging, mobile, cloud-based portal,",
     "summary": "A global medical device manufacturer looking to differentiate by introducing a mobile imaging device for use outside of traditional healthcare facilities.  Primary objective was to rapidly build a cloud-based portal allowing a mobile device to send images",
+    "outline": "outline",
     "team": "",
     "images": 0
   },
@@ -801,6 +835,7 @@ const preloadedStudies = [
     "situation": "A global medical device company needed to simplify assembly of its device to lower sustaining costs while solving  performance issues. Company reputation was at stake.",
     "keywords": "Sanmina, value engineering. Imaging, DFMA",
     "summary": "Biopsy Imaging system product cost too high with complex assembly and service processes, the service time drives low customer-perceived quality, and thermal issues inside cabinet.",
+    "outline": "outline",
     "team": "Carl Blahut, Myron Pugh",
     "images": 0
   },
@@ -824,6 +859,7 @@ const preloadedStudies = [
     "situation": "To secure investors for a second round of funding, DOD technology start-up must expedite the initial product launch. New product is a suicide bomber detection system that integrates sensors and software to automatically assess, at a safe distance, the thr",
     "keywords": "software and systems development, integration and test",
     "summary": "The client had a working prototype that was developed in a research environment. The system software was built and deployed by a collection of manual processes. There was no formal test plan or procedure to verify system operations.",
+    "outline": "outline",
     "team": "",
     "images": 0
   },
@@ -847,6 +883,7 @@ const preloadedStudies = [
     "situation": "A solution provider for logistics automation looking to differentiate themselves in a crowded marketplace must deliver an enterprise level software platform. New platform must bring large amounts of real-time data from facility to enterprise level to enab",
     "keywords": "Package Analytics, Big Data, Logistics Management, Sensors, Consulting",
     "summary": "A solution provider for logistics automation looking to differentiate themselves in a crowded marketplace must deliver an enterprise level software platform. New platform must bring large amounts of real-time data from facility to enterprise level to enab",
+    "outline": "outline",
     "team": "Norb Gravelle, Roger Kerns,  Aamir Chaudhry",
     "images": 0
   },
@@ -870,6 +907,7 @@ const preloadedStudies = [
     "situation": "Global capital equipment supplier dealing with high warranty and service costs for thousands of units running in the field. Predictive analytics could be a viable solution for driving costs down, but the current data handling solution is incapable of proc",
     "keywords": "Predictive maintenance, analytics, data, remote diagnostics",
     "summary": "Global capital equipment supplier dealing with high warranty and service costs for thousands of units running in the field. Predictive analytics could be a viable solution for driving costs down, but the current data handling solution is incapable of proc",
+    "outline": "outline",
     "team": "German analytics team",
     "images": 0
   },
@@ -893,6 +931,7 @@ const preloadedStudies = [
     "situation": "Global manufacturer of robotics systems for the treatment of cardiac arrhythmias focused on developing a remote magnetic navigation system for cardiac catheterization. Additional requirement for new system is to reduce physicians' exposure to radiation du",
     "keywords": "robotics, cardiac, magnetic, radiation, FDA, value driven analysis, technology strategy",
     "summary": "Global manufacturer of robotics systems for the treatment of cardiac arrhythmias to develop a remote magnetic navigation system for cardiac catheterization, reducing physicians’ exposure to radiation during fluoroscopy procedures",
+    "outline": "outline",
     "team": "",
     "images": 0
   },
@@ -916,6 +955,7 @@ const preloadedStudies = [
     "situation": "A market-leading Aerospace company looking to develop product vision and technology roadmap for the next 5+ years. To dominate their time-driven product space, they must launch a cloud-based system that supports short, efficient integration solutions for",
     "keywords": "deicing, weather, airlines, cloud, fault tolerant",
     "summary": "Early corporate focus on the design , manufacturing and deployment of Weather Station Hardware. Business model switched to that of an Application Service Provider. Prototype application and hosting center both need major upgrade to support the planned rap",
+    "outline": "outline",
     "team": "Ari Berman, Charlie Alfred, Michael Dixon",
     "images": 0
   },
@@ -939,6 +979,7 @@ const preloadedStudies = [
     "situation": "An automated material handling solution provider needed to develop a new mixed pallet building system within a very tight market window. Solution must provide fast re-planning, greater efficiency and control while allowing for customization to meet future",
     "keywords": "",
     "summary": "An automated material handling solution provider developing a new mixed pallet building system within a very tight market window. Solution must provide fast re-planning, greater efficiency and control while allowing for customization to meet future busine",
+    "outline": "outline",
     "team": "Tom Mariano, Jeff Liscouski",
     "images": 0
   },
@@ -962,6 +1003,7 @@ const preloadedStudies = [
     "situation": "Company developing a new warehouse automation system faced aggressive time-to-market deadline to satisfy customer requirements. This solution would improve warehouse operational parameters such as storage density, inventory traceability and throughput cyc",
     "keywords": "WCS",
     "summary": "Company developing a new warehouse automation system faced aggressive time-to-market deadline to satisfy customer requirements. This solution would improve warehouse operational parameters such as storage density, inventory traceability and throughput cyc",
+    "outline": "outline",
     "team": "Tom Mariano, Jeff Liscouski",
     "images": 0
   },
@@ -985,6 +1027,7 @@ const preloadedStudies = [
     "situation": "Healthcare technology company providing benefit verification services must expedite the prescription approval process while ensuring security of highly sensitive patient data. Current manual verification process takes 1-3 days before  prescription is writ",
     "keywords": "Cloud, cybersecurity, service oriented architecture (SOA), pharmacy",
     "summary": "Foliage was selected to develop a web based platform to be used by Pharmaceutical companies for investigating insurance reimbursements for new drugs.  The system interfaces with > 450 insurance companies to query reimbursement information, and processes t",
+    "outline": "outline",
     "team": "Adam Hesse",
     "images": 0
   },
@@ -1008,6 +1051,7 @@ const preloadedStudies = [
     "situation": "Leading manufacturer of oncology systems interested in developing a low cost imaging panel for dental application. Support needed to develop product architecture, conceptual design, and initial fabrication of the product.",
     "keywords": "X-ray, product architecture, platform architecture",
     "summary": "X-ray tube and imager manufacturer developing a low cost imaging panel for dental X-rays - needs help developing product architecture, conceptual design and initial fabrication of product",
+    "outline": "outline",
     "team": "",
     "images": 0
   },
@@ -1031,6 +1075,7 @@ const preloadedStudies = [
     "situation": "Venture-funded medical device company focused on developing advanced radiation therapy technology struggling with development effort of a combined real-time imaging and radiation therapy system for cancer treatment.",
     "keywords": "imaging, cancer, software, 501(k), FDA, oncology",
     "summary": "Combine real-time imaging and radiation therapy system for cancer treatment. Challenge: The majority of the system was built but the control system was late and over budget threatening the entire program. System assessment, Planning, Development\n2 write-u",
+    "outline": "outline",
     "team": "Dan Goldman, Greg Walsh",
     "images": 0
   },
@@ -1054,6 +1099,7 @@ const preloadedStudies = [
     "situation": "Global supplier of optical metrology instruments must deliver new innovative product to meet customer need under extremely tight time constraints. This new product uses 3D mapping to characterize a lens surface requiring a level of accuracy that had never",
     "keywords": "Time to market, 3D mapping, lens surface, accuracy",
     "summary": "Global supplier of optical metrology instruments must deliver new innovative product to meet customer need under extremely tight time constraints. This new product uses 3D mapping to characterize a lens surface requiring a level of accuracy that had never",
+    "outline": "outline",
     "team": "Rick Flanders, Tom Mariano",
     "images": 0
   }

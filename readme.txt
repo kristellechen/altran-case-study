@@ -18,6 +18,8 @@ npm install mongoose
 Install standard-js from Sam Chen
 To autofix formatting. stop server and run 'standard --fix'
 
+npm install pptxgenjs
+
 https://www.npmjs.com/package/vue-toasted
 npm install vue-toasted --save
 import Toasted from 'vue-toasted';
