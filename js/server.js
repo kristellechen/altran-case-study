@@ -101,12 +101,22 @@ module.exports = {
       CaseStudies.getCaseStudyById(id).then(study => {
         if (study.sector === 'MedTech') {
           slidetype = 'MedTech_TITLE_SLIDE'
-        } else {
+        }
+        else if (study.sector == "HIT") {
           slidetype = 'HIT_TITLE_SLIDE'
+        }
+        else if (study.sector == "AMH") {
+          slidetype = 'AMH_TITLE_SLIDE'
+        }
+        else {
+          slidetype = 'IE_TITLE_SLIDE'
         }
         SlideMaker.createSlide(pptx, study, slidetype, (presentation) => {
           resolve(presentation)
         })
+      })
+      .catch(err => {
+        reject(err)
       })
     })
   }
