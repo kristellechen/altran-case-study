@@ -128,6 +128,8 @@
         // note the use of handler and deep
         handler(newVal, oldVal) {
           this.$emit('onStudyUpdated', newVal)
+          var canSubmit = !this.hasErrorClient && !this.hasErrorProjectName && !this.hasErrorBrand
+          this.$emit('onCanSubmit', canSubmit)
         },
         deep: true // set deep to look for nested changes
       }

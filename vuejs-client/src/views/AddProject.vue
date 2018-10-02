@@ -1,11 +1,12 @@
 <template>
     <div>
         <Toasted href='toasted' />
+        {{newStudy}}
         <div class='myContainer'>
             <div class='card'>
                 <div class='card-header'>Add a new case study</div>
                 <div class='card-body'>
-                    <Study v-bind:study='newStudy'></Study>
+                    <Study v-bind:studyProp='newStudy' @onCanSubmit='doCanSubmit'></Study>
                 </div>
                 <div class='card-footer'>
                     <div class='d-flex justify-content-between'>
@@ -16,7 +17,7 @@
                             <div class='text-success'>{{message}}</div>
                         </div>
                         <div>
-                            <b-button class='btn-success' @click.prevent='createProject'>Submit</b-button>
+                            <b-button class='btn-success' :disabled='!canSubmit' @click.prevent='createProject'>Submit</b-button>
                         </div>
                     </div>
                 </div>
@@ -42,7 +43,8 @@
             return {
                 newStudy: {},
                 message: 'hahaha',
-                hasError: false
+                hasError: false,
+                canSubmit: true
             }
         },
         components: {
@@ -60,6 +62,9 @@
                 }).catch(err => {
                     this.$toasted.show(err.message, toastrOpts)
                 })
+            },
+            doCanSubmit: function (payload) {
+                this.canSubmit = payload
             }
         },
         mounted() {
