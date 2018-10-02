@@ -4,7 +4,8 @@
       <div class='row'>
         <div class='col-1 my-auto labelDiv'>Client</div>
         <div class='col-5'>
-          <input type='text' id='inlineFormInputGroup' class='form-control' placeholder='Client' v-model='study.client'>
+          <b-form-input id='inlineFormInputGroup' type='text' class='form-control' :state='!hasErrorClient' placeholder='Client name is required'
+            v-model='study.client' />
         </div>
         <div class='col-1 my-auto labelDiv'>Engagement</div>
         <div class='col-5'>
@@ -13,38 +14,40 @@
       </div>
       <div class='row'>
         <div class='col-1 my-auto labelDiv'>Project</div>
-        <div class='col-5'> <input type='text' id='inlineFormInputGroup' class='form-control' placeholder='Client'
-            v-model='study.projectName'>
+        <div class='col-5'>
+          <b-form-input id='inlineFormInputGroup' :state='!hasErrorProjectName' class='form-control' placeholder='Project name is required'
+            v-model='study.projectName' />
         </div>
         <div class='col-1 my-auto labelDiv'>Discipline</div>
-        <div class='col-5'> <input type='text' id='inlineFormInputGroup' class='form-control' placeholder='Client'
-            v-model='study.discipline'>
+        <div class='col-5'>
+          <b-form-input id='inlineFormInputGroup' class='form-control' placeholder='Client' v-model='study.discipline' />
         </div>
       </div>
       <div class='row'>
         <div class='col-1 my-auto labelDiv'>Year</div>
-        <div class='col-5'> <input type='text' id='inlineFormInputGroup' class='form-control' placeholder='Client'
-            v-model='study.year'>
+        <div class='col-5'>
+          <b-form-input id='inlineFormInputGroup' class='form-control' placeholder='Client' v-model='study.year' />
         </div>
         <div class='col-1 my-auto labelDiv'>Summary</div>
-        <div class='col-5'> <input type='text' id='inlineFormInputGroup' class='form-control' placeholder='Client'
-            v-model='study.summary'>
+        <div class='col-5'>
+          <b-form-input id='inlineFormInputGroup' class='form-control' placeholder='Client' v-model='study.summary' />
         </div>
       </div>
       <div class='row'>
         <div class='col-1 my-auto labelDiv'>Brand</div>
-        <div class='col-5'> <input type='text' id='inlineFormInputGroup' class='form-control' placeholder='Client'
-            v-model='study.brand'>
+        <div class='col-5'>
+          <b-form-input id='inlineFormInputGroup' :state='!hasErrorBrand' class='form-control' placeholder='Error brand is required'
+            v-model='study.brand' />
         </div>
         <div class='col-1 my-auto labelDiv'>Project Team</div>
-        <div class='col-5'> <input type='text' id='inlineFormInputGroup' class='form-control' placeholder='Client'
-            v-model='study.team'>
+        <div class='col-5'>
+          <b-form-input id='inlineFormInputGroup' class='form-control' placeholder='Client' v-model='study.team' />
         </div>
       </div>
       <div class='row'>
         <div class='col-1 my-auto labelDiv'>Industry</div>
-        <div class='col-5'><input type='text' id='inlineFormInputGroup' class='form-control' placeholder='Client'
-            v-model='study.industry'>
+        <div class='col-5'>
+          <b-form-input id='inlineFormInputGroup' class='form-control' placeholder='Client' v-model='study.industry' />
         </div>
         <div class='col-1 my-auto labelDiv'>Keywords</div>
         <div class='col-5'>
@@ -53,12 +56,12 @@
       </div>
       <div class='row'>
         <div class='col-1 my-auto labelDiv'>Sector</div>
-        <div class='col-5'> <input type='text' id='inlineFormInputGroup' class='form-control' placeholder='Client'
-            v-model='study.sector'>
+        <div class='col-5'>
+          <b-form-input id='inlineFormInputGroup' class='form-control' placeholder='Client' v-model='study.sector' />
         </div>
         <div class='col-1 my-auto labelDiv'>Project Type</div>
-        <div class='col-5'> <input type='text' id='inlineFormInputGroup' class='form-control' placeholder='Client'
-            v-model='study.projectApplicationType'>
+        <div class='col-5'>
+          <b-form-input id='inlineFormInputGroup' class='form-control' placeholder='Client' v-model='study.projectApplicationType' />
         </div>
       </div>
       <div class='row'>
@@ -67,8 +70,8 @@
           <Multiselect v-model='selectedServices' :options='services' :multiple='true'></Multiselect>
         </div>
         <div class='col-1 my-auto labelDiv'>Image</div>
-        <div class='col-5'> <input type='text' id='inlineFormInputGroup' class='form-control' placeholder='Client'
-            v-model='study.images'>
+        <div class='col-5'>
+          <b-form-input id='inlineFormInputGroup' class='form-control' placeholder='Client' v-model='study.images' />
         </div>
       </div>
       <div class='row'>
@@ -107,7 +110,8 @@
       return {
         selectedServices: [],
         selectedKeywords: [],
-        selectedEngagementTypes: []
+        selectedEngagementTypes: [],
+        study: this.studyProp
       }
     },
     watch: {
@@ -119,9 +123,16 @@
       },
       selectedEngagementTypes: function (array) {
         this.study.engagementType = array.join(', ')
+      },
+      study: {
+        // note the use of handler and deep
+        handler(newVal, oldVal) {
+          this.$emit('onStudyUpdated', newVal)
+        },
+        deep: true // set deep to look for nested changes
       }
     },
-    props: ['study'],
+    props: ['studyProp'],
     computed: {
       services() {
         return this.$store.state.services.map(a => a.name)
@@ -131,9 +142,22 @@
       },
       engagementTypes() {
         return this.$store.state.engagementTypes.map(a => a.name)
+      },
+      hasErrorClient() {
+        return (!this.study.client || this.study.client.length <= 0) ? true : null
+      },
+      hasErrorProjectName() {
+        return (!this.study.projectName || this.study.projectName.length <= 0) ? true : null
+      },
+      hasErrorBrand() {
+        return (!this.study.brand || this.study.brand.length <= 0) ? true : null
       }
     },
-    methods: {},
+    methods: {
+      isNullOrEmpty(str) {
+        return (!str || 0 === str.length);
+      }
+    },
     mounted() {
       // When this components is mounted, convert strings to the multiselect controls.
       this.selectedServices = this.study.services.split(',')

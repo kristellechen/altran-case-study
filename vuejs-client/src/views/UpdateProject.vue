@@ -5,7 +5,7 @@
             <div class='card'>
                 <div class='card-header'>Update Case Study</div>
                 <div class='card-body'>
-                    <Study v-bind:study='study'></Study>
+                    <Study v-bind:studyProp='study'></Study>
                 </div>
                 <div class='card-footer'>
                     <div class='d-flex justify-content-between'>
