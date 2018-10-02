@@ -1370,7 +1370,7 @@ module.exports.updateCaseStudy = (id, study) => {
     new: true
   }
 
-  return CaseStudies.findByIdAndUpdate(id, update).exec()
+  return CaseStudies.findByIdAndUpdate(id, update, options).exec()
 
   // return new Promise((resolve, reject) => {
   //   CaseStudies.findByIdAndUpdate(id, update).exec((err, study) => {

@@ -28,7 +28,7 @@
         </div>
         <div class='col-1 my-auto labelDiv'>Summary</div>
         <div class='col-5'> <input type='text' id='inlineFormInputGroup' class='form-control' placeholder='Client'
-            v-model='study.projectSummary'>
+            v-model='study.summary'>
         </div>
       </div>
       <div class='row'>
@@ -38,7 +38,7 @@
         </div>
         <div class='col-1 my-auto labelDiv'>Project Team</div>
         <div class='col-5'> <input type='text' id='inlineFormInputGroup' class='form-control' placeholder='Client'
-            v-model='study.projectTeam'>
+            v-model='study.team'>
         </div>
       </div>
       <div class='row'>
