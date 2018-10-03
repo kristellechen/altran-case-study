@@ -162,9 +162,9 @@
     },
     mounted() {
       // When this components is mounted, convert strings to the multiselect controls.
-      this.selectedServices = this.study.services.split(',')
-      this.selectedKeywords = this.study.keywords.split(',')
-      this.selectedEngagementTypes = this.study.engagementType.split(',')
+      // this.selectedServices = this.studyProp.services.split(',')
+      // this.selectedKeywords = this.studyProp.keywords.split(',')
+      // this.selectedEngagementTypes = this.studyProp.engagementType.split(',')
     }
   }
 </script>

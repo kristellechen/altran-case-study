@@ -1,7 +1,6 @@
 <template>
     <div>
         <Toasted href='toasted' />
-        {{newStudy}}
         <div class='myContainer'>
             <div class='card'>
                 <div class='card-header'>Add a new case study</div>
@@ -41,7 +40,7 @@
         name: 'addproject',
         data() {
             return {
-                newStudy: {},
+                newStudy: fs.getNewStudy(),
                 message: 'hahaha',
                 hasError: false,
                 canSubmit: true
@@ -55,9 +54,9 @@
                 server.createCaseStudy(this.newStudy).then(resp => {
                     console.log(resp)
                     if (resp.status === 200) {
-                        this.$toasted.show('New case study created successfully')
+                        this.$toasted.show('New case study created successfully', toastrOpts)
                     } else {
-                        this.$toasted.show('Creating new case study failed.')
+                        this.$toasted.show('Creating new case study failed.', toastrOpts)
                     }
                 }).catch(err => {
                     this.$toasted.show(err.message, toastrOpts)
@@ -66,9 +65,6 @@
             doCanSubmit: function (payload) {
                 this.canSubmit = payload
             }
-        },
-        mounted() {
-            this.newStudy = fs.getNewStudy()
         }
     }
 </script>
