@@ -31,3 +31,18 @@ npm install vue-multiselect
 Reading guide : https://github.com/bradtraversy/bookstore
 
 Good tool to get : Postman
+
+Deployment on Ubuntu 16.04:
+1. Install npm
+2. Install mongo DB: https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
+3. Start Mongo DB:
+   screen sudo mongod --bind_ip 127.0.0.1
+   Ctrl-A then Ctrl-D
+4. git clone altran-case-study project:
+   git clone https://github.com/kristellechen/altran-case-study.git
+5. start server from altran-case-study directory:
+   screen npm start
+   Ctrl-A then Ctrl-D
+6. start client from vuejs-client directory:
+   screen npm run serve
+   Ctrl-A then Ctrl-D
