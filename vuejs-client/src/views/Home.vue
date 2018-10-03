@@ -108,7 +108,6 @@
         })
       },
       doDeleteStudy: function () {
-        alert(`doDeleteStudy - ${this.selectedStudyId}`)
         this.$store.dispatch('deleteStudy', this.selectedStudyId).then(resp => {
           this.$toasted.show(this.$store.getters.message, toastrOpts)
         }).catch(err => {
