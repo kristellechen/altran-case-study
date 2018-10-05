@@ -53,5 +53,38 @@ export default {
       console.log(resp)
       return resp
     })
+  },
+
+  // Create a new engagement type
+  // localhost:3000/engagement-table
+  createEngagementType: function (tag) {
+    var url = `${baseURL}/engagement-table`
+    var engagement = {
+      'engagementId': 999,
+      'name': tag
+    }
+    return axios.post(url, engagement)
+  },
+
+  // Create a new keyword type
+  // localhost:3000/keyword-table
+  createKeywordType: function (tag) {
+    var url = `${baseURL}/keyword-table`
+    var keyword = {
+      'keywordId': 999,
+      'name': tag
+    }
+    return axios.post(url, keyword)
+  },
+
+  // Create a new service type
+  // localhost:3000/services-table
+  createServiceType: function (tag) {
+    var url = `${baseURL}/services-table`
+    var serviceType = {
+      'serviceId': 999,
+      'name': tag
+    }
+    return axios.post(url, serviceType)
   }
 }

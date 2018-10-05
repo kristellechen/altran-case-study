@@ -13,7 +13,26 @@ export default new Vuex.Store({
     isBusy: false,
     message: ''
   },
-  mutations: {},
+  mutations: {
+    resfreshEngagementList (state) {
+      var callback = server.getEngagementList()
+      callback.then(resp => {
+        state.engagementTypes = resp.data
+      })
+    },
+    resfreshKeywordList (state) {
+      var callback = server.getKeywordList()
+      callback.then(resp => {
+        state.keywords = resp.data
+      })
+    },
+    resfreshServiceList (state) {
+      var callback = server.getServicesList()
+      callback.then(resp => {
+        state.services = resp.data
+      })
+    }
+  },
   actions: {
     // Get the services, engagement-type and keywords from the server once.
     // We assume that these changes very infrequently

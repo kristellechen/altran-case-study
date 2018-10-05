@@ -65,6 +65,16 @@ router.get('/engagement-table', function (req, res, next) {
   })
 })
 
+// Create an engagement type.
+// localhost:3000/engagement-table
+router.post('/engagement-table', function (req, res) {
+  server.addEngagement(req.body).then(resp => {
+    res.json(resp)
+  }).catch(err => {
+    res.status(500).json(err)
+  })
+})
+
 // Get Services Table
 router.get('/services-table', function (req, res, next) {
   server.getServicesList().then(resp => {
@@ -74,12 +84,32 @@ router.get('/services-table', function (req, res, next) {
   })
 })
 
-// Get Services Table
+// Create an service type.
+// localhost:3000/services-table
+router.post('/services-table', function (req, res) {
+  server.addService(req.body).then(resp => {
+    res.json(resp)
+  }).catch(err => {
+    res.status(500).json(err)
+  })
+})
+
+// Get Keyword Table
 router.get('/keyword-table', function (req, res, next) {
   server.getKeywordList().then(resp => {
     res.json(resp)
   }).catch(err => {
     res.json(err)
+  })
+})
+
+// Create an keyword type.
+// localhost:3000/keyword-table
+router.post('/keyword-table', function (req, res) {
+  server.addKeyword(req.body).then(resp => {
+    res.json(resp)
+  }).catch(err => {
+    res.status(500).json(err)
   })
 })
 

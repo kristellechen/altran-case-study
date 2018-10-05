@@ -58,8 +58,23 @@ module.exports.loadServices = (callback) => {
 }
 
 // ADD Services
-module.exports.addService = (item, callback) => {
-  Services.create(item, callback)
+module.exports.addService = (item) => {
+  return new Promise((resolve, reject) => {
+    Services.findServiceByName(item.name, (found) => {
+      if (found) {
+        resolve(found)
+      }
+      else {
+        resolve(Services.create(item))
+      }
+    })
+  })
+}
+
+// FIND service
+module.exports.findServiceByName = (name, callback) => {
+  var query = { name: name }
+  Services.findOne(query).exec().then(callback)
 }
 
 // GET Services

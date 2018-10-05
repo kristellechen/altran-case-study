@@ -13,6 +13,12 @@ let Services = require('../models/service')
 let CaseStudies = require('../models/caseStudy')
 let SlideMaker = require('../js/slidesMaker')
 
+//   STEPS for DEPLOYMENT to NEW SERVER
+//   1. Un-Comment the following to seed the initial set of data.
+//   2. Run the server once, then stop the server.
+//   3. Comment out the following lines before running server again
+//      to prevent duplicating data!!
+//   4. NO NEED TO un-comment these lines of code when restarting server
 // EngagementTypes.loadEngagementTypes()
 // Keywords.loadKeywords()
 // Services.loadServices()
@@ -29,6 +35,10 @@ module.exports = {
     })
   },
 
+  addService(newService) {
+    return Services.addService(newService)
+  },
+
   // Get Engagement Table
   getEngagementList () {
     return new Promise((resolve, reject) => {
@@ -38,6 +48,10 @@ module.exports = {
     })
   },
 
+  addEngagement(engagement) {
+    return EngagementTypes.addEngagementTypes(engagement)
+  },
+
   // Get the Keyword Table
   getKeywordList () {
     return new Promise((resolve, reject) => {
@@ -45,6 +59,10 @@ module.exports = {
         resolve(keys)
       })
     })
+  },
+
+  addKeyword(keyword) {
+    return Keywords.addKeyword(keyword)
   },
 
   // Get case studies

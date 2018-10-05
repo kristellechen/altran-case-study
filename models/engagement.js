@@ -31,8 +31,23 @@ module.exports.loadEngagementTypes = (callback) => {
 }
 
 // ADD EngagementTypes
-module.exports.addEngagementTypes = (engagement, callback) => {
-  EngagementTypes.create(engagement, callback)
+module.exports.addEngagementTypes = (engagement) => {
+  return new Promise((resolve, reject) => {
+    EngagementTypes.findEngagementByName(engagement.name, (item) => {
+      if (item) {
+        resolve (item)
+      }
+      else {
+        resolve(EngagementTypes.create(engagement))
+      }
+    })
+  })
+}
+
+// FIND EngagementType
+module.exports.findEngagementByName = (name, callback) => {
+  var query = { name: name}
+  EngagementTypes.findOne(query).exec().then(callback)
 }
 
 // GET EngagementTypes
