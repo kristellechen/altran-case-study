@@ -9,7 +9,7 @@
         </div>
         <div class='col-1 my-auto labelDiv'>Engagement</div>
         <div class='col-5'>
-          <Multiselect v-model='selectedEngagementTypes' :options='engagementTypes' :multiple='true'></Multiselect>
+          <Multiselect v-model='selectedEngagementTypes' :options='engagementTypes' :multiple='true' :taggable='true' @tag='customEngagement'></Multiselect>
         </div>
       </div>
       <div class='row'>
@@ -51,7 +51,7 @@
         </div>
         <div class='col-1 my-auto labelDiv'>Keywords</div>
         <div class='col-5'>
-          <Multiselect v-model='selectedKeywords' :options='keywords' :multiple='true'></Multiselect>
+          <Multiselect v-model='selectedKeywords' :options='keywords' :multiple='true'  :taggable='true' @tag='customKeyword'></Multiselect>
         </div>
       </div>
       <div class='row'>
@@ -67,7 +67,7 @@
       <div class='row'>
         <div class='col-1 my-auto labelDiv'>Services</div>
         <div class='col-5'>
-          <Multiselect v-model='selectedServices' :options='services' :multiple='true'></Multiselect>
+          <Multiselect v-model='selectedServices' :options='services' :multiple='true'  :taggable='true' @tag='customService'></Multiselect>
         </div>
         <div class='col-1 my-auto labelDiv'>Image</div>
         <div class='col-5'>
@@ -100,6 +100,7 @@
 
 <script>
   import Multiselect from 'vue-multiselect'
+  import server from '@/js/server'
 
   export default {
     name: 'Study',
@@ -158,6 +159,30 @@
     methods: {
       isNullOrEmpty(str) {
         return (!str || 0 === str.length);
+      },
+      customEngagement(liveEngagement) {
+        server.createEngagementType(liveEngagement).then(resp => {
+          if (resp.status == 200) {
+            this.$store.commit('resfreshEngagementList')
+            this.selectedEngagementTypes.push(liveEngagement)
+          }
+        })
+      },
+      customKeyword(liveKeyword) {
+        server.createKeywordType(liveKeyword).then(resp => {
+          if (resp.status == 200) {
+            this.$store.commit('resfreshKeywordList')
+            this.selectedKeywords.push(liveKeyword)
+          }
+        })
+      },
+      customService(liveService) {
+        server.createServiceType(liveService).then(resp => {
+          if (resp.status == 200) {
+            this.$store.commit('resfreshServiceList')
+            this.selectedServices.push(liveService)
+          }          
+        })
       }
     },
     mounted() {

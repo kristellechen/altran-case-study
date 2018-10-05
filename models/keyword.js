@@ -394,13 +394,28 @@ module.exports.loadKeywords = (callback) => {
 }
 
 // ADD Keywords
-module.exports.addKeyword = (keyword, callback) => {
-  Keywords.create(keyword, callback)
+module.exports.addKeyword = (keyword) => {
+  return new Promise((resolve, reject) => {
+    Keywords.findKeywordByName(keyword.name, (item) => {
+      if (item) {
+        resolve(item)
+      }
+      else {
+        resolve(Keywords.create(keyword))
+      }
+    })
+  })
 }
 
 // GET Keywords
 module.exports.getKeywords = (callback, limit) => {
   Keywords.find().limit(limit).exec().then(callback)
+}
+
+// FIND keyword
+module.exports.findKeywordByName = (name, callback) => {
+  var query = { name: name }
+  Keywords.findOne(query).exec().then(callback)
 }
 
 // UPDATE Keywords
