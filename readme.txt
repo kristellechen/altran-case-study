@@ -13,11 +13,16 @@ npm install --save-dev nodemon
 modify package.json
 'start' : 'nodemon ./bin/www' 
 
+install MogoDB Community Edition:
+https://docs.mongodb.com/manual/administration/install-community/
+
+install mongoose:
 npm install mongoose
 
 Install standard-js from Sam Chen
 To autofix formatting. stop server and run 'standard --fix'
 
+install power point slides library:
 npm install pptxgenjs
 
 https://www.npmjs.com/package/vue-toasted
@@ -32,7 +37,7 @@ Reading guide : https://github.com/bradtraversy/bookstore
 
 Good tool to get : Postman
 
-Deployment on Ubuntu 16.04:
+Deployment on Ubuntu 16.04, current server is 172.16.2.139:
 1. Install npm
 2. Install mongo DB: https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
 3. Start Mongo DB:
@@ -46,3 +51,35 @@ Deployment on Ubuntu 16.04:
 6. start client from vuejs-client directory:
    screen npm run serve
    Ctrl-A then Ctrl-D
+7. To resume any of the above 3 session:
+   screen -r <screen id>
+
+
+PROJECT STATUS:
+1. Data stored in MongoDB
+2. Server is NodeJS and RESTFUL, the following operations are implemented:
+   a. List all studies
+   b. Get a study
+   c. Update a study
+   d. Create a study
+   e. Delete a study
+   f. Get Engagement List
+   g. Get Keyword List
+   h. Get Service List
+   i. Create Engagement
+   j. Create Keyword 
+   k. Create Service
+   l. Generate PowerPoint presentation of a study
+3. UI is built using VueJS framework
+   a. UI has full connectivity to server and implemnts all servers RESTFUL apis
+   b. Home page Search bar
+4. Source Control is currently located:
+   https://github.com/kristellechen/altran-case-study.git
+
+Features still TODO:
+1. Move source to Altran repository
+2. Docker deployment
+3. User Management: authentication
+4. Change the "client" field to how "keyword" field is implemented, where one 
+   can starts typing, the UI populates with known used answers
+5. PDF generation
