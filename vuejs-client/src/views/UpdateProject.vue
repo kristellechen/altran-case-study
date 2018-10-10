@@ -16,7 +16,7 @@
                             <div class='text-success'>{{message}}</div>
                         </div>
                         <div>
-                            <b-button class='btn-success' :disabled='!canSubmit' @click.prevent='updateCaseStudy' >Submit</b-button>
+                            <b-button class='btn-success' :disabled='!canSubmit' @click.prevent='updateCaseStudy'>Submit</b-button>
                         </div>
                     </div>
                 </div>
@@ -65,8 +65,8 @@
 
 <style scoped>
     .myContainer {
-        margin-left: 50px;
-        margin-right: 50px;
-        margin-top: 150px;
+        padding-left: 50px;
+        padding-right: 50px;
+        padding-top: 100px;
     }
 </style>

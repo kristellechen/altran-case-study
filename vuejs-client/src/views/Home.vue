@@ -142,4 +142,15 @@
   margin-top: 100px;
 }
 
+table tr:nth-child(even) {
+    background-color: #eee;
+}
+table tr:nth-child(odd) {
+   background-color: #fff;
+}
+table th {
+    background-color: #BC3123;
+    color: white;
+}
+
 </style>
