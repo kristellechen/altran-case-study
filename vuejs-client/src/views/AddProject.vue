@@ -70,11 +70,20 @@
 </script>
 
 <style scoped>
+    .myContainer {
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 130px;
+        padding-bottom: 60px;
+    }
 
-.myContainer {
-  margin-left: 50px;
-  margin-right: 50px;
-  margin-top: 150px;
-}
+    .card-header, .card-footer {
+        color: white;
+        background-color: #BC3123
+    }
 
+    .card-body {
+        color: #8E8E8A;
+        background-color: #EAE7DC
+    }
 </style>
