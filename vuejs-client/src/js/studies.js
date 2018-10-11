@@ -22,7 +22,8 @@ module.exports = {
       keywords: '501 (k)',
       summary: 'summary',
       team: 'team involved',
-      images: '0'
+      images: '0',
+      outline: 'outline'
     }
   },
 

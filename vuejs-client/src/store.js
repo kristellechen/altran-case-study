@@ -31,6 +31,12 @@ export default new Vuex.Store({
       callback.then(resp => {
         state.services = resp.data
       })
+    },
+    refreshStudiesList (state) {
+      var callback = server.getStudies()
+      callback.then(resp => {
+        state.studies = resp.data
+      })
     }
   },
   actions: {

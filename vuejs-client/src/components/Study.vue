@@ -30,7 +30,7 @@
         </div>
         <div class='col-1 my-auto labelDiv'>Summary</div>
         <div class='col-5'>
-          <b-form-input id='inlineFormInputGroup' class='form-control' placeholder='Client' v-model='study.summary' />
+          <b-form-textarea id='inlineFormInputGroup' class='form-control' placeholder='Client' rows='1' v-model='study.summary'></b-form-textarea>
         </div>
       </div>
       <div class='row'>
@@ -69,9 +69,9 @@
         <div class='col-5'>
           <Multiselect v-model='selectedServices' :options='services' :multiple='true'  :taggable='true' @tag='customService'></Multiselect>
         </div>
-        <div class='col-1 my-auto labelDiv'>Image</div>
+        <div class='col-1 my-auto labelDiv'>Outline</div>
         <div class='col-5'>
-          <b-form-input id='inlineFormInputGroup' class='form-control' placeholder='Client' v-model='study.images' />
+          <b-form-input id='inlineFormInputGroup' class='form-control' placeholder='Client' v-model='study.outline' />
         </div>
       </div>
       <div class='row'>
@@ -92,6 +92,12 @@
         <div class='col-1 my-auto labelDiv'>Solution</div>
         <div class='col-5'>
           <b-form-textarea class="form-control" rows="5" v-model='study.solution'></b-form-textarea>
+        </div>
+      </div>
+      <div class ='row'>
+        <div class='col-1 my-auto labelDiv'>Image</div>
+        <div class='col-5'>
+          <b-form-file id='imgFile' ref='imgFile' class='form-control' v-model='study.image'></b-form-file>
         </div>
       </div>
     </form>

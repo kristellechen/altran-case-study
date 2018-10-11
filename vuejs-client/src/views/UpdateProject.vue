@@ -52,6 +52,7 @@
             updateCaseStudy: function () {
                 this.$store.dispatch('updateStudy', this.study).then(resp => {
                     this.$toasted.show('Case study updated successfully', toastrOpts)
+                    this.$store.commit('refreshStudiesList')
                 }).catch(err => {
                     this.$toasted.show(err.message, toastrOpts)
                 })
