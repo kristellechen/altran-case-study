@@ -187,7 +187,7 @@
           if (resp.status == 200) {
             this.$store.commit('resfreshServiceList')
             this.selectedServices.push(liveService)
-          }          
+          }
         })
       }
     },
@@ -204,5 +204,10 @@
 <style scoped>
   .labelDiv {
     text-align: right;
+  }
+
+  .form-control{
+    color: #182628;
+    background-color: #f2f2f2
   }
 </style>
