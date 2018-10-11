@@ -95,7 +95,6 @@
         this.$refs['deleteConfirmation'].show()
       },
       exportStudy: function (study) {
-        alert('export study')
         server.getPresentation(study._id).then(resp => {
           const url = window.URL.createObjectURL(new Blob([resp.data]));
           const link = document.createElement('a');

@@ -39,8 +39,8 @@
 .header {
 	background-repeat: repeat-x;
 	background-size: cover;
-	/* background-image: url('../assets/nightsky.jpg'); */
- 	background: url('../assets/nightsky.jpg');
+ 	/* background: url('../assets/nightsky.jpg'); */
+  background-color: #314455;
 }
 
 .headerText {
