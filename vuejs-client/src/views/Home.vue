@@ -10,7 +10,7 @@
       </b-card>
     </b-collapse>
     <table class='table table-striped'>
-      <thead>
+      <thead class='text-left'>
         <th>Client</th>
         <th>Project</th>
         <th>Keyword</th>
@@ -19,7 +19,7 @@
         <th>Discipline</th>
         <th>Action</th>
       </thead>
-      <tr v-for='(study, index) in studies' :key='index' @click='editStudy(study)'>
+      <tr class='text-left' v-for='(study, index) in studies' :key='index' @click='editStudy(study)'>
         <td>{{study.client}}</td>
         <td>{{study.projectName}}</td>
         <td>{{study.keywords}}</td>
