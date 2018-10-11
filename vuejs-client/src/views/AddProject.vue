@@ -55,6 +55,7 @@
                     console.log(resp)
                     if (resp.status === 200) {
                         this.$toasted.show('New case study created successfully', toastrOpts)
+                        this.$store.commit('refreshStudiesList')
                     } else {
                         this.$toasted.show('Creating new case study failed.', toastrOpts)
                     }

@@ -1364,7 +1364,8 @@ module.exports.updateCaseStudy = (id, study) => {
     keywords: study.keywords,
     summary: study.summary,
     team: study.team,
-    images: study.images
+    images: study.images,
+    outline: study.outline
   }
   let options = {
     new: true
