@@ -1,9 +1,6 @@
 <template>
-  <div class='myContainer'>
+  <div>
     <Toasted href='toasted' />
-    <b-row>
-      <button type="button" v-b-toggle.collapse1 class="btn btn-outline-primary mr-3 mt-3 mb-2 ml-auto"><i class="fas fa-search"></i></button>
-    </b-row>
     <b-collapse id='collapse1' class='mt-2'>
       <b-card>
         <Search @onSearch='doSearch' />
@@ -134,12 +131,6 @@
 </script>
 
 <style scoped>
-
-.myContainer {
-  margin-left: 50px;
-  margin-right: 50px;
-  margin-top: 100px;
-}
 
 table tr:nth-child(even) {
     background-color: #eee;

@@ -1,7 +1,7 @@
 <template>
     <div>
         <Toasted href='toasted' />
-        <div class='myContainer'>
+        <div>
             <div class='card'>
                 <div class='card-header'>Add a new case study</div>
                 <div class='card-body'>
@@ -71,14 +71,8 @@
 </script>
 
 <style scoped>
-    .myContainer {
-        padding-left: 20px;
-        padding-right: 20px;
-        padding-top: 130px;
-        padding-bottom: 60px;
-    }
-
-    .card-header, .card-footer {
+    .card-header,
+    .card-footer {
         color: white;
         background-color: #BC3123
     }

@@ -1,20 +1,22 @@
 <template>
-  <nav class="navbar fixed-top header">
+  <nav class="navbar sticky-top header">
     <b-navbar-brand href="#">
       <img src='@/assets/AltranLogo.jpg' />
     </b-navbar-brand>
-    <b-nav-item>
-      <router-link to='/Home'><div class='headerText h5'>Home</div></router-link>
+    <b-nav-item class='nav-link'>
+      <router-link to='/Home'><div class='headerText'>Home</div></router-link>
     </b-nav-item>
-    <b-nav-item>
-      <router-link to='/AddProject'><div class='headerText h5'>Add Project</div></router-link>
+    <b-nav-item class='nav-link'>
+      <router-link to='/AddProject'><div class='headerText'>Add Project</div></router-link>
     </b-nav-item>
-    <b-nav-item>
-      <router-link to='/ExportSettings'><div class='headerText h5'>Export Settings</div></router-link>
+    <b-nav-item class='nav-link'>
+      <router-link to='/ExportSettings'><div class='headerText'>Export Settings</div></router-link>
     </b-nav-item>
-    <b-nav-item href="#"><div class='headerText h5'>Logout</div></b-nav-item>
-    <b-nav-item class='ml-auto' href="#">{{message}}</b-nav-item>
-    <b-nav-item class='ml-auto'><img src='@/assets/logo.png' width=50dp /></b-nav-item>
+    <b-nav-item class='nav-link' href="#"><div class='headerText'>Logout</div></b-nav-item>
+    <b-nav-item class='ml-auto nav-link' href="#">{{message}}</b-nav-item>
+    <b-nav-item class='ml-auto nav-link'>
+      <button type="button" v-b-toggle.collapse1 class="btn btn-outline-light mr-3 mt-3 mb-2 ml-auto"><i class="fas fa-search"></i></button>
+    </b-nav-item>
   </nav>
 </template>
 

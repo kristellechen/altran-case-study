@@ -8,11 +8,11 @@
             v-model='study.client' />
         </div>
         <div class='col-1 my-auto labelDiv'>Engagement</div>
-        <div class='col-5'>
+        <div class='col-5 rowStyle'>
           <Multiselect v-model='selectedEngagementTypes' :options='engagementTypes' :multiple='true' :taggable='true' @tag='customEngagement'></Multiselect>
         </div>
       </div>
-      <div class='row'>
+      <div class='row rowStyle'>
         <div class='col-1 my-auto labelDiv'>Project</div>
         <div class='col-5'>
           <b-form-input id='inlineFormInputGroup' :state='!hasErrorProjectName' class='form-control' placeholder='Project name is required'
@@ -23,7 +23,7 @@
           <b-form-input id='inlineFormInputGroup' class='form-control' placeholder='Client' v-model='study.discipline' />
         </div>
       </div>
-      <div class='row'>
+      <div class='row rowStyle'>
         <div class='col-1 my-auto labelDiv'>Year</div>
         <div class='col-5'>
           <b-form-input id='inlineFormInputGroup' class='form-control' placeholder='Client' v-model='study.year' />
@@ -33,7 +33,7 @@
           <b-form-textarea id='inlineFormInputGroup' class='form-control' placeholder='Client' rows='1' v-model='study.summary'></b-form-textarea>
         </div>
       </div>
-      <div class='row'>
+      <div class='row rowStyle'>
         <div class='col-1 my-auto labelDiv'>Brand</div>
         <div class='col-5'>
           <b-form-input id='inlineFormInputGroup' :state='!hasErrorBrand' class='form-control' placeholder='Error brand is required'
@@ -44,7 +44,7 @@
           <b-form-input id='inlineFormInputGroup' class='form-control' placeholder='Client' v-model='study.team' />
         </div>
       </div>
-      <div class='row'>
+      <div class='row rowStyle'>
         <div class='col-1 my-auto labelDiv'>Industry</div>
         <div class='col-5'>
           <b-form-input id='inlineFormInputGroup' class='form-control' placeholder='Client' v-model='study.industry' />
@@ -54,7 +54,7 @@
           <Multiselect v-model='selectedKeywords' :options='keywords' :multiple='true'  :taggable='true' @tag='customKeyword'></Multiselect>
         </div>
       </div>
-      <div class='row'>
+      <div class='row rowStyle'>
         <div class='col-1 my-auto labelDiv'>Sector</div>
         <div class='col-5'>
           <b-form-input id='inlineFormInputGroup' class='form-control' placeholder='Client' v-model='study.sector' />
@@ -64,7 +64,7 @@
           <b-form-input id='inlineFormInputGroup' class='form-control' placeholder='Client' v-model='study.projectApplicationType' />
         </div>
       </div>
-      <div class='row'>
+      <div class='row rowStyle'>
         <div class='col-1 my-auto labelDiv'>Services</div>
         <div class='col-5'>
           <Multiselect v-model='selectedServices' :options='services' :multiple='true'  :taggable='true' @tag='customService'></Multiselect>
@@ -74,27 +74,27 @@
           <b-form-input id='inlineFormInputGroup' class='form-control' placeholder='Client' v-model='study.outline' />
         </div>
       </div>
-      <div class='row'>
+      <div class='row rowStyle'>
         <div class='col-1 my-auto labelDiv'>Challenges</div>
         <div class='col-5'>
-          <b-form-textarea class="form-control" rows="5" v-model='study.challenges'></b-form-textarea>
+          <b-form-textarea class="form-control" rows='5' max-rows='5' v-model='study.challenges'></b-form-textarea>
         </div>
         <div class='col-1 my-auto labelDiv'>Situation</div>
         <div class='col-5'>
-          <b-form-textarea class="form-control" rows="5" v-model='study.situation'></b-form-textarea>
+          <b-form-textarea class="form-control" rows='5' max-rows='5' v-model='study.situation'></b-form-textarea>
         </div>
       </div>
-      <div class='row'>
+      <div class='row rowStyle'>
         <div class='col-1 my-auto labelDiv'>Results</div>
         <div class='col-5'>
-          <b-form-textarea class="form-control" rows="5" v-model='study.provenResults'></b-form-textarea>
+          <b-form-textarea class="form-control" rows='5' max-rows='5' v-model='study.provenResults'></b-form-textarea>
         </div>
         <div class='col-1 my-auto labelDiv'>Solution</div>
         <div class='col-5'>
-          <b-form-textarea class="form-control" rows="5" v-model='study.solution'></b-form-textarea>
+          <b-form-textarea class="form-control" rows='5' max-rows='5' v-model='study.solution'></b-form-textarea>
         </div>
       </div>
-      <div class ='row'>
+      <div class ='row rowStyle'>
         <div class='col-1 my-auto labelDiv'>Image</div>
         <div class='col-5'>
           <b-form-file id='imgFile' ref='imgFile' class='form-control' v-model='study.image'></b-form-file>
@@ -210,5 +210,9 @@
     color: #182628;
     background-color: #f2f2f2;
     margin: 1px;
+  }
+
+  .rowStyle {
+    margin-bottom: 5px;
   }
 </style>

@@ -2,7 +2,7 @@
   <div id="app">
     <Toasted href='toasted' />
     <Header />
-    <router-view />
+    <router-view class='myRouterView' />
   </div>
 </template>
 
@@ -10,11 +10,11 @@
   // @ is an alias to /src
   import Header from '@/components/Header.vue'
 
- let toastrOpts = {
-        duration: 3000,
-        fullWidth: true,
-        position: 'top-center'
-    }
+  let toastrOpts = {
+    duration: 3000,
+    fullWidth: true,
+    position: 'top-center'
+  }
 
   export default {
     name: 'app',
@@ -52,5 +52,11 @@
 
   #nav a.router-link-exact-active {
     color: #42b983;
+  }
+
+  .myRouterView {
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 5px;
   }
 </style>
