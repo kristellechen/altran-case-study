@@ -1,6 +1,5 @@
 <template>
   <div>
-    <Toasted href='toasted' />
     <b-collapse id='collapse1' class='mt-2'>
       <b-card>
         <Search @onSearch='doSearch' />
@@ -46,12 +45,6 @@
 <script>
   import server from '@/js/server'
   import Search from '@/components/Search.vue'
-
-  let toastrOpts = {
-    duration: 3000,
-    fullWidth: true,
-    position: 'top-center'
-  }
 
   export default {
     name: 'home',
@@ -126,6 +119,9 @@
 
         return isExists
       }
+    },
+    mounted() {
+      this.$toasted.show(this.$store.getters.message)
     }
   }
 </script>

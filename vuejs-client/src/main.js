@@ -13,9 +13,15 @@ import Toasted from 'vue-toasted'
 import '@fortawesome/fontawesome-free/css/all.css' // Ensure you are using css-loader
 import 'vue-multiselect/dist/vue-multiselect.min.css'
 
+let toastrOpts = {
+  duration: 3000,
+  fullWidth: true,
+  position: 'top-center'
+}
+
 Vue.config.productionTip = false
 Vue.use(BootstrapVue)
-Vue.use(Toasted)
+Vue.use(Toasted, toastrOpts)
 Vue.use(Multiselect)
 
 new Vue({

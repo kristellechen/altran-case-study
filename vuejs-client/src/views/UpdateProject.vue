@@ -1,6 +1,5 @@
 <template>
     <div>
-        <Toasted href='toasted' />
         <div>
             <div class='card'>
                 <div class='card-header'>Update Case Study</div>
@@ -29,12 +28,6 @@
     import Study from '@/components/Study.vue'
     import server from '@/js/server'
 
-    let toastrOpts = {
-        duration: 3000,
-        fullWidth: true,
-        position: 'top-center'
-    }
-
     export default {
         name: 'updateCaseStudy',
         data() {
@@ -51,10 +44,10 @@
         methods: {
             updateCaseStudy: function () {
                 this.$store.dispatch('updateStudy', this.study).then(resp => {
-                    this.$toasted.show('Case study updated successfully', toastrOpts)
+                    this.$toasted.show('Case study updated successfully')
                     this.$store.commit('refreshStudiesList')
                 }).catch(err => {
-                    this.$toasted.show(err.message, toastrOpts)
+                    this.$toasted.show(err.message)
                 })
             },
             doCanSubmit: function (payload) {

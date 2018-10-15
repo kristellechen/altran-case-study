@@ -1,6 +1,5 @@
 <template>
     <div>
-        <Toasted href='toasted' />
         <div>
             <div class='card'>
                 <div class='card-header'>Add a new case study</div>
@@ -30,12 +29,6 @@
     import server from '@/js/server'
     import fs from '@/js/studies.js'
 
-    let toastrOpts = {
-        duration: 3000,
-        fullWidth: true,
-        position: 'top-center'
-    }
-
     export default {
         name: 'addproject',
         data() {
@@ -54,13 +47,13 @@
                 server.createCaseStudy(this.newStudy).then(resp => {
                     console.log(resp)
                     if (resp.status === 200) {
-                        this.$toasted.show('New case study created successfully', toastrOpts)
+                        this.$toasted.show('New case study created successfully')
                         this.$store.commit('refreshStudiesList')
                     } else {
-                        this.$toasted.show('Creating new case study failed.', toastrOpts)
+                        this.$toasted.show('Creating new case study failed.')
                     }
                 }).catch(err => {
-                    this.$toasted.show(err.message, toastrOpts)
+                    this.$toasted.show(err.message)
                 })
             },
             doCanSubmit: function (payload) {
