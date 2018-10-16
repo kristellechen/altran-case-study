@@ -5,25 +5,29 @@
     </b-navbar-brand>
     <b-nav-item class='nav-link'>
       <router-link to='/Home'>
-        <div class='headerText'>Home</div>
+        <div v-if='linkActive[0]' class='headerText'><strong>Home</strong></div>
+        <div v-else class='headerText'>Home</div>
       </router-link>
     </b-nav-item>
     <b-nav-item class='nav-link'>
       <router-link to='/AddProject'>
-        <div class='headerText'>Add Project</div>
+        <div v-if='linkActive[1]' class='headerText'><strong>Add Project</strong></div>
+        <div v-else class='headerText'>Add Project</div>
       </router-link>
     </b-nav-item>
     <b-nav-item class='nav-link'>
       <router-link to='/ExportSettings'>
-        <div class='headerText'>Export Settings</div>
+        <div v-if='linkActive[2]' class='headerText'><strong>Export Settings</strong></div>
+        <div v-else class='headerText'>Export Settings</div>
       </router-link>
     </b-nav-item>
     <b-nav-item class='nav-link' href="#">
-      <div class='headerText'>Logout</div>
+      <div v-if='linkActive[2]' class='headerText'><strong>Logout</strong></div>
+      <div v-else class='headerText'>Logout</div>
     </b-nav-item>
     <b-nav-item class='ml-auto nav-link' href="#">{{message}}</b-nav-item>
     <b-nav-item class='ml-auto nav-link'>
-      <button type="button" v-show='canSearch' v-b-toggle.collapse1 class="btn btn-outline-light mr-3 mt-3 mb-2 ml-auto"><i class="fas fa-search"></i></button>
+      <button type="button" v-show='canSearch' v-b-toggle.collapse1 class="btn btn-outline-light mr-3 ml-auto"><i class="fas fa-search"></i></button>
     </b-nav-item>
   </nav>
 </template>
@@ -33,7 +37,8 @@
     name: 'Header',
     data() {
       return {
-        canSearch: false
+        canSearch: true,
+        linkActive: [true, false, false, false]
       }
     },
     computed: {
@@ -42,8 +47,21 @@
       }
     },
     watch: {
-      $route (to, from) {
-        this.canSearch = to.name.toUpperCase() === 'HOME'
+      $route(to, from) {
+        this.canSearch = false
+
+        if (to.name.toUpperCase() === 'HOME') {
+          this.canSearch = true;
+          this.linkActive = [true, false, false, false]
+        } else if (to.name.toUpperCase() == 'ADDPROJECT') {
+          this.linkActive = [false, true, false, false]
+        } else if (to.name.toUpperCase() == 'EXPORTSETTINGS') {
+          this.linkActive = [false, false, true, false]
+        } else if (to.name.toUpperCase() == 'LOGOUT') {
+          this.linkActive = [false, false, false, true]
+        } else {
+          this.linkActive = [false, false, false, false]
+        }
       }
     }
   }

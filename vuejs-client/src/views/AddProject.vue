@@ -7,16 +7,8 @@
                     <Study v-bind:studyProp='newStudy' @onCanSubmit='doCanSubmit'></Study>
                 </div>
                 <div class='card-footer'>
-                    <div class='d-flex justify-content-between'>
-                        <div v-if='hasError'>
-                            <div class='text-danger'>{{message}}</div>
-                        </div>
-                        <div v-else>
-                            <div class='text-success'>{{message}}</div>
-                        </div>
-                        <div>
-                            <b-button class='btn-success' :disabled='!canSubmit' @click.prevent='createProject'>Submit</b-button>
-                        </div>
+                    <div class='text-right'>
+                        <b-button class='btn-success' :disabled='!canSubmit' @click.prevent='createProject'>Submit</b-button>
                     </div>
                 </div>
             </div>
@@ -34,7 +26,6 @@
         data() {
             return {
                 newStudy: fs.getNewStudy(),
-                message: 'hahaha',
                 hasError: false,
                 canSubmit: true
             }
