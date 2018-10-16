@@ -1,7 +1,7 @@
 let axios = require('axios')
 
 const baseURL = 'http://172.16.2.139:3000'
-//const baseURL = 'http://localhost:3000'
+// const baseURL = 'http://localhost:3000'
 
 export default {
   getStudies: function () {

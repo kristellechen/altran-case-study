@@ -28,9 +28,9 @@
         <div class='col-5'>
           <b-form-input id='inlineFormInputGroup' class='form-control' placeholder='Client' v-model='study.year' />
         </div>
-        <div class='col-1 my-auto labelDiv'>Summary</div>
+               <div class='col-1 my-auto labelDiv'>Industry</div>
         <div class='col-5'>
-          <b-form-textarea id='inlineFormInputGroup' class='form-control' placeholder='Client' rows='1' v-model='study.summary'></b-form-textarea>
+          <b-form-input id='inlineFormInputGroup' class='form-control' placeholder='Client' v-model='study.industry' />
         </div>
       </div>
       <div class='row rowStyle'>
@@ -45,9 +45,9 @@
         </div>
       </div>
       <div class='row rowStyle'>
-        <div class='col-1 my-auto labelDiv'>Industry</div>
+                <div class='col-1 my-auto labelDiv'>Summary</div>
         <div class='col-5'>
-          <b-form-input id='inlineFormInputGroup' class='form-control' placeholder='Client' v-model='study.industry' />
+          <b-form-textarea id='inlineFormInputGroup' class='form-control' placeholder='Client' rows='1' v-model='study.summary'></b-form-textarea>
         </div>
         <div class='col-1 my-auto labelDiv'>Keywords</div>
         <div class='col-5'>

@@ -35,7 +35,7 @@ module.exports = {
     })
   },
 
-  addService(newService) {
+  addService (newService) {
     return Services.addService(newService)
   },
 
@@ -48,7 +48,7 @@ module.exports = {
     })
   },
 
-  addEngagement(engagement) {
+  addEngagement (engagement) {
     return EngagementTypes.addEngagementTypes(engagement)
   },
 
@@ -61,7 +61,7 @@ module.exports = {
     })
   },
 
-  addKeyword(keyword) {
+  addKeyword (keyword) {
     return Keywords.addKeyword(keyword)
   },
 
@@ -99,21 +99,17 @@ module.exports = {
       CaseStudies.getCaseStudyById(id).then(study => {
         if (study.sector === 'MedTech') {
           slidetype = 'MedTech_TITLE_SLIDE'
-        }
-        else if (study.sector == "HIT") {
+        } else if (study.sector === 'HIT') {
           slidetype = 'HIT_TITLE_SLIDE'
-        }
-        else if (study.sector == "AMH") {
+        } else if (study.sector === 'AMH') {
           slidetype = 'AMH_TITLE_SLIDE'
-        }
-        else {
+        } else {
           slidetype = 'IE_TITLE_SLIDE'
         }
         SlideMaker.createSlide(pptx, study, slidetype, (presentation) => {
           resolve(presentation)
         })
-      })
-      .catch(err => {
+      }).catch(err => {
         reject(err)
       })
     })

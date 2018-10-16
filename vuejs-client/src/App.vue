@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Toasted href='toasted' />
+    <Toasted href='toasted' name='theToasted'/>
     <Header />
     <router-view class='myRouterView' />
   </div>

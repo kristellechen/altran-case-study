@@ -1,5 +1,5 @@
-const pptxgenjs = require('pptxgenjs')
-const CaseStudies = require('../models/caseStudy')
+// const pptxgenjs = require('pptxgenjs')
+// const CaseStudies = require('../models/caseStudy')
 
 module.exports.defineMasterSlideTemplate = (pptx) => {
   pptx.defineSlideMaster({
@@ -122,18 +122,18 @@ module.exports.createSlide = (pptx, study, title, callback) => {
     align: 'center',
     margin: 0,
     isTextBox: 'true' })
-    slide.addText(study.outline, { x: 0.0,
-      y: 0.68,
-      w: 13.3,
-      h: 0.45,
-      fontFace: 'Arial',
-      bold: 'true',
-      color: '000000',
-      fontSize: 16,
-      valign: 'm',
-      align: 'center',
-      margin: 0,
-      isTextBox: 'true' })
+  slide.addText(study.outline, { x: 0.0,
+    y: 0.68,
+    w: 13.3,
+    h: 0.45,
+    fontFace: 'Arial',
+    bold: 'true',
+    color: '000000',
+    fontSize: 16,
+    valign: 'm',
+    align: 'center',
+    margin: 0,
+    isTextBox: 'true' })
   slide.addText(study.situation, { x: 0.58,
     y: 2.05,
     w: 9.0,
@@ -173,6 +173,6 @@ module.exports.createSlide = (pptx, study, title, callback) => {
     color: '595959',
     valign: 'top',
     bullet: { code: '25AA' } })
- pptx.save('http', callback)
+  pptx.save('http', callback)
 //  pptx.save('sample.pptx', callback)
 }
