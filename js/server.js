@@ -28,41 +28,41 @@ module.exports = {
 
   // Get Services Table
   getServicesList () {
-    return new Promise((resolve, reject) => {
-      Services.getServices((serviceList) => {
-        resolve(serviceList)
-      })
-    })
+    return Services.getServices()
   },
 
   addService (newService) {
     return Services.addService(newService)
   },
 
+  deleteService (serviceId) {
+    return Services.removeService(serviceId)
+  },
+
   // Get Engagement Table
   getEngagementList () {
-    return new Promise((resolve, reject) => {
-      EngagementTypes.getEngagementTypes((engagements) => {
-        resolve(engagements)
-      })
-    })
+    return EngagementTypes.getEngagementTypes()
   },
 
   addEngagement (engagement) {
     return EngagementTypes.addEngagementTypes(engagement)
   },
 
+  deleteEngagement (id) {
+    return EngagementTypes.removeEngagementType(id)
+  },
+
   // Get the Keyword Table
   getKeywordList () {
-    return new Promise((resolve, reject) => {
-      Keywords.getKeywords((keys) => {
-        resolve(keys)
-      })
-    })
+    return Keywords.getKeywords()
   },
 
   addKeyword (keyword) {
     return Keywords.addKeyword(keyword)
+  },
+
+  deleteKeyword (id) {
+    return Keywords.removeKeyword(id)
   },
 
   // Get case studies

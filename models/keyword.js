@@ -394,22 +394,29 @@ module.exports.loadKeywords = (callback) => {
 }
 
 // ADD Keywords
-module.exports.addKeyword = (keyword) => {
-  return new Promise((resolve, reject) => {
-    Keywords.findKeywordByName(keyword.name, (item) => {
-      if (item) {
-        resolve(item)
+module.exports.addKeyword = (item) => {
+  var p1 = function (name) {
+    return Keywords.findOne({
+      'name': {
+        $regex: new RegExp('^' + item.name.toLowerCase(), 'i')
       }
-      else {
-        resolve(Keywords.create(keyword))
-      }
-    })
-  })
+    }).exec()
+  }
+
+  var p2 = function (resp) {
+    if (resp) {
+      throw new Error(`${item.name} already exists`)
+    }
+    return Keywords.create(item)
+  }
+
+  return p1(item.name)
+    .then(p2)
 }
 
 // GET Keywords
-module.exports.getKeywords = (callback, limit) => {
-  Keywords.find().limit(limit).exec().then(callback)
+module.exports.getKeywords = () => {
+  return Keywords.find().exec()
 }
 
 // FIND keyword
@@ -428,5 +435,5 @@ module.exports.updateKeyword = (id, keyword, options, callback) => {
 // DELETE Keywords
 module.exports.removeKeyword = (id, callback) => {
   var query = { _id: id }
-  Keywords.deleteOne(query, callback)
+  return Keywords.findByIdAndRemove(query).exec()
 }

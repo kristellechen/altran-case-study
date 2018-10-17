@@ -16,81 +16,127 @@ const Services = module.exports = mongoose.model('Services', serviceSchema)
 
 // load initial factory data
 module.exports.loadServices = (callback) => {
-  Services.create({ serviceId: 1, name: 'Development' }, (err) => {
+  Services.create({
+    serviceId: 1,
+    name: 'Development'
+  }, (err) => {
     if (err) console.log(err)
   })
-  Services.create({ serviceId: 2, name: 'Project Management' }, (err) => {
+  Services.create({
+    serviceId: 2,
+    name: 'Project Management'
+  }, (err) => {
     if (err) console.log(err)
   })
-  Services.create({ serviceId: 3, name: 'Requirements Definition' }, (err) => {
+  Services.create({
+    serviceId: 3,
+    name: 'Requirements Definition'
+  }, (err) => {
     if (err) console.log(err)
   })
-  Services.create({ serviceId: 4, name: 'Design' }, (err) => {
+  Services.create({
+    serviceId: 4,
+    name: 'Design'
+  }, (err) => {
     if (err) console.log(err)
   })
-  Services.create({ serviceId: 5, name: 'Development' }, (err) => {
+  Services.create({
+    serviceId: 5,
+    name: 'Development'
+  }, (err) => {
     if (err) console.log(err)
   })
-  Services.create({ serviceId: 6, name: 'Verification' }, (err) => {
+  Services.create({
+    serviceId: 6,
+    name: 'Verification'
+  }, (err) => {
     if (err) console.log(err)
   })
-  Services.create({ serviceId: 7, name: 'Test' }, (err) => {
+  Services.create({
+    serviceId: 7,
+    name: 'Test'
+  }, (err) => {
     if (err) console.log(err)
   })
-  Services.create({ serviceId: 8, name: 'Consulting' }, (err) => {
+  Services.create({
+    serviceId: 8,
+    name: 'Consulting'
+  }, (err) => {
     if (err) console.log(err)
   })
-  Services.create({ serviceId: 9, name: 'ESS' }, (err) => {
+  Services.create({
+    serviceId: 9,
+    name: 'ESS'
+  }, (err) => {
     if (err) console.log(err)
   })
-  Services.create({ serviceId: 10, name: 'Software Development' }, (err) => {
+  Services.create({
+    serviceId: 10,
+    name: 'Software Development'
+  }, (err) => {
     if (err) console.log(err)
   })
-  Services.create({ serviceId: 11, name: 'Process Consulting' }, (err) => {
+  Services.create({
+    serviceId: 11,
+    name: 'Process Consulting'
+  }, (err) => {
     if (err) console.log(err)
   })
-  Services.create({ serviceId: 12, name: 'IoT' }, (err) => {
+  Services.create({
+    serviceId: 12,
+    name: 'IoT'
+  }, (err) => {
     if (err) console.log(err)
   })
-  Services.create({ serviceId: 13, name: 'Analytics' }, (err) => {
+  Services.create({
+    serviceId: 13,
+    name: 'Analytics'
+  }, (err) => {
     if (err) console.log(err)
   })
 }
 
 // ADD Services
 module.exports.addService = (item) => {
-  return new Promise((resolve, reject) => {
-    Services.findServiceByName(item.name, (found) => {
-      if (found) {
-        resolve(found)
+  var p1 = function (name) {
+    return Services.findOne({
+      'name': {
+        $regex: new RegExp('^' + item.name.toLowerCase(), 'i')
       }
-      else {
-        resolve(Services.create(item))
-      }
-    })
-  })
-}
+    }).exec()
+  }
 
-// FIND service
-module.exports.findServiceByName = (name, callback) => {
-  var query = { name: name }
-  Services.findOne(query).exec().then(callback)
+  var p2 = function (resp) {
+    if (resp) {
+      throw new Error(`${item.name} already exists`)
+    }
+    return Services.create(item)
+  }
+
+  return p1(item.name)
+    .then(p2)
 }
 
 // GET Services
 module.exports.getServices = (callback, limit) => {
-  Services.find().limit(limit).exec().then(callback)
+  return Services.find().limit(limit).exec()
 }
 
 // UPDATE Services
-module.exports.updateService = (id, item, options, callback) => {
-  var query = { _id: id }
-  var update = { name: item.name }
-  Services.findOneAndUpdate(query, update, options, callback)
+module.exports.updateService = (id, item) => {
+  var query = {
+    _id: id
+  }
+  var update = {
+    name: item.name
+  }
+  return Services.findOneAndUpdate(query, update).exec()
 }
 
 // DELETE Services
 module.exports.removeService = (id, callback) => {
-  var query = { _id: id }
-  Services.deleteOne(query, callback)
+  var query = {
+    _id: id
+  }
+  return Services.findByIdAndRemove(query).exec()
 }

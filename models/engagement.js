@@ -31,28 +31,35 @@ module.exports.loadEngagementTypes = (callback) => {
 }
 
 // ADD EngagementTypes
-module.exports.addEngagementTypes = (engagement) => {
-  return new Promise((resolve, reject) => {
-    EngagementTypes.findEngagementByName(engagement.name, (item) => {
-      if (item) {
-        resolve (item)
+module.exports.addEngagementTypes = (item) => {
+  var p1 = function (name) {
+    return EngagementTypes.findOne({
+      'name': {
+        $regex: new RegExp('^' + item.name.toLowerCase(), 'i')
       }
-      else {
-        resolve(EngagementTypes.create(engagement))
-      }
-    })
-  })
+    }).exec()
+  }
+
+  var p2 = function (resp) {
+    if (resp) {
+      throw new Error(`${item.name} already exists`)
+    }
+    return EngagementTypes.create(item)
+  }
+
+  return p1(item.name)
+    .then(p2)
 }
 
 // FIND EngagementType
 module.exports.findEngagementByName = (name, callback) => {
-  var query = { name: name}
-  EngagementTypes.findOne(query).exec().then(callback)
+  var query = { name: name }
+  return EngagementTypes.findOne(query).exec()
 }
 
 // GET EngagementTypes
-module.exports.getEngagementTypes = (callback, limit) => {
-  EngagementTypes.find().limit(limit).exec().then(callback)
+module.exports.getEngagementTypes = () => {
+  return EngagementTypes.find().exec()
 }
 
 // UPDATE EngagementTypes
@@ -65,5 +72,5 @@ module.exports.updateEngagementType = (id, engagement, options, callback) => {
 // DELETE EngagementTypes
 module.exports.removeEngagementType = (id, callback) => {
   var query = { _id: id }
-  EngagementTypes.deleteOne(query, callback)
+  return EngagementTypes.findByIdAndRemove(query).exec()
 }
