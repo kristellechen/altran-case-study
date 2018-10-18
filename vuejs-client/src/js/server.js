@@ -67,6 +67,12 @@ export default {
     return axios.post(url, engagement)
   },
 
+  // Delete from keyword-table
+  deleteEngagementType: function (id) {
+    var url = `${baseURL}/engagement-table/${id}`
+    return axios.delete(url)
+  },
+
   // Create a new keyword type
   // localhost:3000/keyword-table
   createKeywordType: function (tag) {
@@ -78,6 +84,12 @@ export default {
     return axios.post(url, keyword)
   },
 
+  // Delete from keyword-table
+  deleteKeyword: function (id) {
+    var url = `${baseURL}/keyword-table/${id}`
+    return axios.delete(url)
+  },
+
   // Create a new service type
   // localhost:3000/services-table
   createServiceType: function (tag) {
@@ -87,5 +99,11 @@ export default {
       'name': tag
     }
     return axios.post(url, serviceType)
+  },
+
+  // Delete from service-table
+  deleteService: function (id) {
+    var url = `${baseURL}/services-table/${id}`
+    return axios.delete(url)
   }
 }

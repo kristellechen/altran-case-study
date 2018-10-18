@@ -4,6 +4,7 @@ import Home from './views/Home.vue'
 import AddProject from '@/views/AddProject.vue'
 import UpdateProject from '@/views/UpdateProject.vue'
 import ExportSettings from '@/views/ExportSettings.vue'
+import EditTables from '@/views/EditTables.vue'
 
 Vue.use(Router)
 
@@ -31,6 +32,11 @@ export default new Router({
       name: 'updateproject',
       props: true,
       component: UpdateProject
+    },
+    {
+      path: '/edittables',
+      name: 'edittables',
+      component: EditTables
     },
     {
       path: '/exportsettings',

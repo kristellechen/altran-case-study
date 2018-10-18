@@ -26,7 +26,7 @@ export default new Vuex.Store({
         state.keywords = resp.data
       })
     },
-    resfreshServiceList (state) {
+    refreshServiceList (state) {
       var callback = server.getServicesList()
       callback.then(resp => {
         state.services = resp.data
@@ -112,6 +112,102 @@ export default new Vuex.Store({
         context.state.message = `Creating new case study failed.  ${err.message}`
         throw (new Error(context.state.message))
       })
+    },
+    addService (context, newService) {
+      var p1 = server.createServiceType(newService)
+      var p2 = server.getServicesList()
+
+      return p1.then(resp => {
+        context.state.message = 'New service created successfully'
+        return resp
+      })
+        .then(p2.then(resp => {
+          context.state.services = resp.data
+        }))
+        .catch(err => {
+          console.log(err)
+          throw (err)
+        })
+    },
+    addKeyword (context, newKeyword) {
+      var p1 = server.createKeywordType(newKeyword)
+      var p2 = server.getKeywordList()
+
+      return p1.then(resp => {
+        context.state.message = 'New keyword created successfully'
+        return resp
+      })
+        .then(p2.then(resp => {
+          context.state.keywords = resp.data
+        }))
+        .catch(err => {
+          console.log(err)
+          throw (err)
+        })
+    },
+    addEngagementType (context, newEngagementType) {
+      var p1 = server.createEngagementType(newEngagementType)
+      var p2 = server.getEngagementList()
+
+      return p1.then(resp => {
+        context.state.message = 'New engagement type created successfully'
+        return resp
+      })
+        .then(p2.then(resp => {
+          context.state.engagementTypes = resp.data
+        }))
+        .catch(err => {
+          console.log(err)
+          throw (err)
+        })
+    },
+    deleteService (context, id) {
+      var p1 = server.deleteService(id)
+      var p2 = server.getServicesList()
+
+      return p1.then(resp => {
+        context.state.message = 'Deleted successfully'
+        return resp
+      })
+        .then(p2.then(resp => {
+          context.state.services = resp.data
+        }))
+        .catch(err => {
+          console.log(err)
+          throw (err)
+        })
+    },
+    deleteKeyword (context, id) {
+      var p1 = server.deleteKeyword(id)
+      var p2 = server.getKeywordList()
+
+      return p1.then(resp => {
+        context.state.message = 'Deleted successfully'
+        return resp
+      })
+        .then(p2.then(resp => {
+          context.state.keywords = resp.data
+        }))
+        .catch(err => {
+          console.log(err)
+          throw (err)
+        })
+    },
+    deleteEngagementType (context, id) {
+      var p1 = server.deleteEngagementType(id)
+      var p2 = server.getEngagementList()
+
+      return p1.then(resp => {
+        context.state.message = 'Deleted successfully'
+        return resp
+      })
+        .then(p2.then(resp => {
+          context.state.engagementTypes = resp.data
+        }))
+        .catch(err => {
+          console.log(err)
+          throw (err)
+        })
     }
   }
 })

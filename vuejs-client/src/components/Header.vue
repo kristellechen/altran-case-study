@@ -16,13 +16,19 @@
       </router-link>
     </b-nav-item>
     <b-nav-item class='nav-link'>
+      <router-link to='/EditTables'>
+        <div v-if='linkActive[2]' class='headerText'><strong>Edit Tables</strong></div>
+        <div v-else class='headerText'>Edit Tables</div>
+      </router-link>
+    </b-nav-item>
+    <b-nav-item class='nav-link'>
       <router-link to='/ExportSettings'>
-        <div v-if='linkActive[2]' class='headerText'><strong>Export Settings</strong></div>
+        <div v-if='linkActive[3]' class='headerText'><strong>Export Settings</strong></div>
         <div v-else class='headerText'>Export Settings</div>
       </router-link>
     </b-nav-item>
     <b-nav-item class='nav-link' href="#">
-      <div v-if='linkActive[2]' class='headerText'><strong>Logout</strong></div>
+      <div v-if='linkActive[4]' class='headerText'><strong>Logout</strong></div>
       <div v-else class='headerText'>Logout</div>
     </b-nav-item>
     <b-nav-item class='ml-auto nav-link' href="#">{{message}}</b-nav-item>
@@ -38,7 +44,7 @@
     data() {
       return {
         canSearch: true,
-        linkActive: [true, false, false, false]
+        linkActive: [true, false, false, false, false]
       }
     },
     computed: {
@@ -52,15 +58,17 @@
 
         if (to.name.toUpperCase() === 'HOME') {
           this.canSearch = true;
-          this.linkActive = [true, false, false, false]
+          this.linkActive = [true, false, false, false, false]
         } else if (to.name.toUpperCase() == 'ADDPROJECT') {
-          this.linkActive = [false, true, false, false]
+          this.linkActive = [false, true, false, false, false]
+        } else if (to.name.toUpperCase() == 'EDITTABLES') {
+          this.linkActive = [false, false, true, false, false]
         } else if (to.name.toUpperCase() == 'EXPORTSETTINGS') {
-          this.linkActive = [false, false, true, false]
+          this.linkActive = [false, false, false, true, false]
         } else if (to.name.toUpperCase() == 'LOGOUT') {
-          this.linkActive = [false, false, false, true]
-        } else {
-          this.linkActive = [false, false, false, false]
+          this.linkActive = [false, false, false, false, true]
+        }  else {
+          this.linkActive = [false, false, false, false, false,]
         }
       }
     }

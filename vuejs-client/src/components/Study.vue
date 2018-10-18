@@ -186,7 +186,7 @@
       customService(liveService) {
         server.createServiceType(liveService).then(resp => {
           if (resp.status == 200) {
-            this.$store.commit('resfreshServiceList')
+            this.$store.commit('refreshServiceList')
             this.selectedServices.push(liveService)
           }
         })
