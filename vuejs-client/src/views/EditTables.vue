@@ -96,12 +96,15 @@
         methods: {
             onAddService: function () {
                 this.$store.dispatch('addService', this.newService)
+                this.newService = null
             },
             onAddKeyword: function () {
                 this.$store.dispatch('addKeyword', this.newKeyword)
+                this.newKeyword = null
             },
             onAddEngagementType: function () {
                 this.$store.dispatch('addEngagementType', this.newEngagementType)
+                this.newEngagementType = null
             },
             onDeleteService: function (id) {
                 this.$store.dispatch('deleteService', id)

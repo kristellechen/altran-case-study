@@ -170,7 +170,7 @@
       customEngagement(liveEngagement) {
         server.createEngagementType(liveEngagement).then(resp => {
           if (resp.status == 200) {
-            this.$store.commit('resfreshEngagementList')
+            this.$store.commit('refreshEngagementList')
             this.selectedEngagementTypes.push(liveEngagement)
           }
         })
@@ -178,7 +178,7 @@
       customKeyword(liveKeyword) {
         server.createKeywordType(liveKeyword).then(resp => {
           if (resp.status == 200) {
-            this.$store.commit('resfreshKeywordList')
+            this.$store.commit('refreshKeywordList')
             this.selectedKeywords.push(liveKeyword)
           }
         })

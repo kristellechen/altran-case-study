@@ -98,9 +98,9 @@
       },
       doDeleteStudy: function () {
         this.$store.dispatch('deleteStudy', this.selectedStudyId).then(resp => {
-          this.$toasted.show(this.$store.getters.message, toastrOpts)
+          this.$toasted.show(this.$store.getters.message)
         }).catch(err => {
-          this.$toasted.show(this.$store.getters.message, toastrOpts)
+          this.$toasted.show(this.$store.getters.message)
         })
       },
       filterFunc: function (item) {
