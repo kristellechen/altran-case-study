@@ -37,7 +37,7 @@
                     <b-list-group-item class='d-flex justify-content-between align-items-center' v-for='(item, index) in keywords'
                         :key='index'>
                         {{item.name}}
-                        <b-btn class='btn-sm' @click.prevent='onDeleteKeyword(item._id)'>X</b-btn>
+                        <b-btn class='btn-sm btn-light' @click.prevent='onDeleteKeyword(item._id)'><i class='fas fa-trash-alt'></i></b-btn>
                     </b-list-group-item>
                 </b-list-group>
             </div>
@@ -46,7 +46,7 @@
                     <b-list-group-item class='d-flex justify-content-between align-items-center' v-for='(item, index) in services'
                         :key='index'>
                         {{item.name}}
-                        <b-btn sm @click.prevent='onDeleteService(item._id)'>x</b-btn>
+                        <b-btn class='btn-sm btn-light' @click.prevent='onDeleteService(item._id)'><i class='fas fa-trash-alt'></i></b-btn>
                     </b-list-group-item>
                 </b-list-group>
             </div>
@@ -55,7 +55,7 @@
                     <b-list-group-item class='d-flex justify-content-between align-items-center' v-for='(item, index) in engagementTypes'
                         :key='index'>
                         {{item.name}}
-                        <b-btn @click.prevent='onDeleteEngagementType(item._id)'>X</b-btn>
+                        <b-btn class='btn-sm btn-light' @click.prevent='onDeleteEngagementType(item._id)'><i class='fas fa-trash-alt'></i></b-btn>
                     </b-list-group-item>
                 </b-list-group>
             </div>
@@ -120,10 +120,10 @@
 </script>
 
 <style scoped>
-    .list-group {
+    /* .list-group {
         max-height: 600px;
         margin-bottom: 10px;
         overflow: scroll;
         -webkit-overflow-scrolling: touch;
-    }
+    } */
 </style>
